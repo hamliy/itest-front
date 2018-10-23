@@ -1,0 +1,95 @@
+/**
+ ** ********************************************************
+ ** The common animtaion css
+ ** @file animation.css
+ ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @date 2018-03-07 17:26:40
+ ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_date 2018-09-28 15:35:50
+ ** @copyright (c) 2018 @yfe/aldnoah-spa
+ ** ********************************************************
+ */
+
+/* =============================================
+=            fade enter transition             =
+============================================= */
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.3s;
+}
+
+/* =====  End of fade enter transition  ====== */
+
+/* =============================================
+=               fade up transition             =
+============================================= */
+
+.fade-up-enter-active {
+  animation: fade-up-in 0.3s;
+}
+
+.fade-up-leave-active {
+  animation: fade-up-in 0.3s reverse;
+}
+
+@keyframes fade-up-in {
+  0% {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* =======  End of fade up transition  ======= */
+
+/* =============================================
+=            fade down transition              =
+============================================= */
+
+.fade-down-enter {
+  transform: translate3d(0, -10px, 0);
+  opacity: 0;
+}
+
+.fade-down-enter-active,
+.fade-down-leave-active {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.fade-down-leave-to {
+  transform: translate3d(0, 10px, 0);
+  opacity: 0;
+}
+
+/* =====  End of fade down transition  ====== */
+
+/* =====  breadcrumb of fade down transition  ====== */
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+
+.breadcrumb-enter,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.breadcrumb-move {
+  transition: all 0.5s;
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+}
+
+/* =====  breadcrumb of fade down transition  ====== */
