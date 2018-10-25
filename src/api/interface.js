@@ -5,14 +5,14 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-10-09 16:18:13
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-12 11:04:32
+ ** @last_modified_date 2018-10-25 17:18:19
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
 import { post } from './index';
 
 export const URL = {
-  getInterface: '/interface/all',
+  getInterface: '/interface/get',
   queryInterface: '/interface/query',
   createInterface: '/interface/create',
   updateInterface: '/interface/update',

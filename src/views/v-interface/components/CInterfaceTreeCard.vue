@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:21:45
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-11 21:07:50
+  -- @last_modified_date 2018-10-25 17:46:25
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -17,7 +17,7 @@
         <el-button
           type="primary"
           round
-          @click="$emit('createTheme')">创建新接口主题</el-button>
+          @click="$emit('createTheme')">添加分类</el-button>
       </div>
     </c-view-header>
     <el-input
@@ -56,7 +56,7 @@
               @click="() => onCreateThemeSub(node)">
               <svg-icon
                 color="#2395f1"
-                title="新增子主题"
+                title="新增子分类"
                 icon-class="theme_add"/>
             </a>
             <a
@@ -134,7 +134,7 @@
       onRemove(node, data) {
         this.$emit('remove', node, data);
       },
-      handleClick(node, data) {
+      handleClick(data, node) {
         this.$emit('nodeClick', node, data);
       }
     }

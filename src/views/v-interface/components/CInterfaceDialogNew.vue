@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 14:55:03
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-11 16:58:49
+  -- @last_modified_date 2018-10-25 17:08:24
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -14,7 +14,7 @@
   <c-dialogue
     :visible.sync="i_visible"
     :title="title"
-    :width="'450px'"
+    :width="'550px'"
     :btn-msg="'提交'"
     @confirm="onConfirm"
     @close="closeDialog"
@@ -25,14 +25,27 @@
       :rules="formRules"
       label-position="left"
       label-width="100px">
-      <el-form-item label="名称" prop="name">
+      <el-form-item label="接口名称" prop="name">
         <el-input v-model="form.name"/>
       </el-form-item>
-      <!-- <el-form-item label="类别" prop="value">
-        <el-radio v-model="form.type" label="subtheme">主题</el-radio>
-        <el-radio v-model="form.type" label="interface">接口</el-radio>
-      </el-form-item> -->
-      <el-form-item label="描述">
+      <el-form-item label="接口路径" prop="path">
+        <el-input
+          v-model="form.path"
+          placeholder="请输入接口路径"
+          class="nput-with-select">
+          <el-select
+            slot="prepend"
+            v-model="form.method"
+            placeholder="请选择">
+            <el-option
+              v-for="method in methods"
+              :key="method.value"
+              :label="method.label"
+              :value="method.value"/>
+          </el-select>
+        </el-input>
+      </el-form-item>
+      <el-form-item label="接口描述">
         <el-input
           v-model="form.desc"
           type="textarea"/>
@@ -63,8 +76,20 @@
         formRules: {
           name: [
             { required: true, message: '请输入接口名' }
+          ],
+          path: [
+            { required: true, message: '请输入接口路径' }
           ]
-        }
+        },
+        methods: [
+          { label: 'GET', value: 'GET' },
+          { label: 'POST', value: 'POST' },
+          { label: 'PUT', value: 'PUT' },
+          { label: 'DELETE', value: 'DELETE' },
+          { label: 'HEAD', value: 'HEAD' },
+          { label: 'OPTION', value: 'OPTION' },
+          { label: 'PATCH', value: 'PATCH' }
+        ]
       };
     },
     methods: {
@@ -91,3 +116,13 @@
     }
   };
 </script>
+
+<style lang="scss" scope>
+  .el-select .el-input {
+    width: 130px;
+  }
+
+  .el-input-group__prepend {
+    background-color: #fff;
+  }
+</style>

@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-22 17:41:44
+  -- @last_modified_date 2018-10-25 17:48:43
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -70,11 +70,13 @@ export default {
       },
       formInterfaceData: {
         name: '',
-        desc: ''
+        desc: '',
+        path: '',
+        mothed: 'GET'
       },
       textThemeMap: {
-        theme: '新增接口主题',
-        subtheme: '新增子主题'
+        theme: '新增接口分类',
+        subtheme: '新增子分类'
       },
       type: 'new',
       themeType: 'new',
@@ -94,6 +96,17 @@ export default {
     this.getTheme();
   },
   methods: {
+    // 判断树节点类型
+    judgeNode(node) {
+      console.log(node);
+      if (node.level === 1) {
+        return 'theme';
+      } else if (node.data.list) {
+        return 'subTheme';
+      }
+      return 'interface';
+    },
+
     getTheme() {
       this[cInterface.GET_THEME]({})
       .then(res => {
@@ -102,6 +115,18 @@ export default {
           node.list = node.sub_themes.concat(node.list);
         });
         this.treeDatas = nodes;
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
+    getInterface(interfaceId) {
+      this[cInterface.GET_INTERFACE]({
+        interface_id: interfaceId
+      })
+      .then(res => {
+        this.themeInfo = res.data;
+        console.log(res.data);
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
@@ -212,11 +237,12 @@ export default {
     },
 
     handleCreateInterface(node) {
-      console.log(node);
       this.dialogInterfaceVisible = true;
       this.formInterfaceData = {
         name: '',
         desc: '',
+        path: '',
+        method: 'GET',
         theme_id: node.level === 1 ? node.data._id : node.parent.data._id,
         sub_theme_name: node.level === 1 ? '' : node.data.name
       };
@@ -230,14 +256,19 @@ export default {
         theme_id: node.data._id
       };
     },
-
-    handleNodeClick(data) {
-      this.themeInfo = {
-        name: data.name,
-        desc: data.desc
-      };
+    // 点击节点
+    handleNodeClick(node, data) {
+      const nodeType = this.judgeNode(node);
+      if (nodeType === 'interface') {
+        this.getInterface(data.interface_id);
+      } else {
+        this.themeInfo = {
+          name: data.name,
+          desc: data.desc
+        };
+      }
     },
-
+    // 点击节点编辑
     handleEdit(node, data) {
       this.dialogInterfaceVisible = true;
       this.type = 'edit';
@@ -252,7 +283,7 @@ export default {
       // }
       // data.children.push(newChild);
     },
-
+    // 点击移除节点
     handleRemove(node, data) {
       const message = '确定要删除吗，是否继续？';
       const title = '删除操作';
@@ -261,16 +292,16 @@ export default {
         cancelButtonText: '取消',
         type: 'danger'
       }).then(() => {
-        if (node.level === 1) {
+        const nodeType = this.judgeNode(node);
+        if (nodeType === 'theme') {
           this.removeTheme(node, data);
-        } else if (node.data.list) {
+        } else if (nodeType === 'subTheme') {
           this.removeThemeSub(node, data);
         } else {
           this.removeThemeInterface(node, data);
         }
       }).catch(() => '');
     }
-
   }
 };
 </script>
