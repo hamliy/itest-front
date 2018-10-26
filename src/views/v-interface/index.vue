@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-25 17:48:43
+  -- @last_modified_date 2018-10-26 10:46:01
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -21,7 +21,11 @@
       @remove="handleRemove"
       @edit="handleEdit"/>
     <c-info-panel>
+      <c-interface-info
+        v-if="isSelectInterface"
+        :info="interfaceInfo"/>
       <c-theme-info
+        v-else
         :info="themeInfo"/>
     </c-info-panel>
     <c-interface-dialog-new
@@ -46,6 +50,7 @@ import CInterfaceDialogNew from './components/CInterfaceDialogNew';
 import CThemeDialogNew from './components/CThemeDialogNew';
 import CInterfaceTreeCard from './components/CInterfaceTreeCard';
 import CThemeInfo from './components/CThemeInfo';
+import CInterfaceInfo from './components/CInterfaceInfo';
 import CInfoPanel from './components/CInfoPanel';
 
 export default {
@@ -55,6 +60,7 @@ export default {
     CThemeDialogNew,
     CInterfaceTreeCard,
     CThemeInfo,
+    CInterfaceInfo,
     CInfoPanel
   },
   mixins: [mInterface, mUtil],
@@ -64,6 +70,7 @@ export default {
       dialogInterfaceVisible: false,
       dialogThemeVisible: false,
       id: 1000,
+      isSelectInterface: false,
       formThemeData: {
         name: '',
         desc: ''
@@ -84,6 +91,12 @@ export default {
       themeInfo: {
         name: '',
         desc: ''
+      },
+      interfaceInfo: {
+        name: '',
+        desc: '',
+        path: '',
+        mothed: 'GET'
       }
     };
   },
@@ -120,13 +133,20 @@ export default {
         this.$_mUtil_messageError(err);
       });
     },
+    // 获取接口信息
     getInterface(interfaceId) {
+      this.interfaceInfo = {
+        name: '',
+        desc: '',
+        path: '',
+        mothed: 'GET'
+      };
       this[cInterface.GET_INTERFACE]({
         interface_id: interfaceId
       })
       .then(res => {
-        this.themeInfo = res.data;
-        console.log(res.data);
+        this.interfaceInfo = Object.assign({}, res.data);
+        console.log(this.interfaceInfo.name);
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
@@ -260,8 +280,10 @@ export default {
     handleNodeClick(node, data) {
       const nodeType = this.judgeNode(node);
       if (nodeType === 'interface') {
+        this.isSelectInterface = true;
         this.getInterface(data.interface_id);
       } else {
+        this.isSelectInterface = false;
         this.themeInfo = {
           name: data.name,
           desc: data.desc

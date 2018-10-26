@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 14:55:03
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-25 17:08:24
+  -- @last_modified_date 2018-10-26 09:57:47
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -31,7 +31,7 @@
       <el-form-item label="接口路径" prop="path">
         <el-input
           v-model="form.path"
-          placeholder="请输入接口路径"
+          placeholder="/path"
           class="nput-with-select">
           <el-select
             slot="prepend"
