@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-10-09 16:20:32
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-12 11:05:12
+ ** @last_modified_date 2018-10-30 13:34:45
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -14,6 +14,8 @@ export const GET_INTERFACE = 'GET_INTERFACE';
 export const QUERY_INTERFACE = 'QUERY_INTERFACE';
 export const CREATE_INTERFACE = 'CREATE_INTERFACE';
 export const UPDATE_INTERFACE = 'UPDATE_INTERFACE';
+export const UPDATE_INTERFACE_BASIC = 'UPDATE_INTERFACE_BASIC';
+export const UPDATE_INTERFACE_BODY = 'UPDATE_INTERFACE_BODY';
 export const DELETE_INTERFACE = 'DELETE_INTERFACE';
 export const CREATE_THEME = 'CREATE_THEME';
 export const CREATE_THEME_SUB = 'CREATE_THEME_SUB';

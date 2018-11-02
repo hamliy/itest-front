@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:21:45
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-25 17:46:25
+  -- @last_modified_date 2018-10-29 22:35:59
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -25,7 +25,7 @@
       placeholder="输入关键字进行过滤"/>
     <el-scrollbar class="live-scrollbar">
       <el-tree
-        ref="tree2"
+        ref="interfaceTree"
         :data="treeData"
         :props="interfaceProps"
         :filter-node-method="filterNode"

@@ -5,7 +5,7 @@
  ** @author wenkanglin <wenkang_lin@kingdee.com>
  ** @date 2017-12-14 13:48:04
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-26 16:56:45
+ ** @last_modified_date 2018-10-30 19:53:52
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -21,6 +21,8 @@ const _vueTree = _path.join(
   'dist',
   'halower-tree.min'
 );
+const _viewerjs = _path.join(dirs.node, 'viewerjs', 'dist', 'viewer');
+
 /**
  * @param {Object} [options={}] - custom options
  * @param {boolean} [options.useEslint] - whether use eslint-loader
@@ -90,7 +92,7 @@ module.exports = (options = {}) => ({
           'css-loader',
           'postcss-loader'
         ],
-        include: options.dll || [dirs.src, _element, _vueTree]
+        include: options.dll || [dirs.src, _element, _vueTree, _viewerjs]
       }
     ])
   }

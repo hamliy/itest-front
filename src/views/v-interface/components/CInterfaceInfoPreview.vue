@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:53:16
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-26 17:03:00
+  -- @last_modified_date 2018-10-30 14:40:10
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -47,14 +47,19 @@
             <el-table-column
               prop="name"
               label="参数名称"
-              width="180"/>
+              width="240"/>
             <el-table-column
               prop="value"
               label="参数值"
-              width="180"/>
+              width="240"/>
             <el-table-column
               prop="required"
-              label="是否必须"/>
+              label="是否必须"
+              width="100">
+              <template slot-scope="scope">
+                <span>{{ scope.row.required ? '是':'否' }}</span>
+              </template>
+            </el-table-column>
             <el-table-column
               prop="example"
               label="示例"/>
@@ -73,14 +78,19 @@
             <el-table-column
               prop="name"
               label="参数名称"
-              width="180"/>
+              width="240"/>
             <el-table-column
               prop="param_type"
               label="参数类型"
               width="180"/>
             <el-table-column
               prop="required"
-              label="是否必须"/>
+              label="是否必须"
+              width="100">
+              <template slot-scope="scope">
+                <span>{{ scope.row.required ? '是':'否' }}</span>
+              </template>
+            </el-table-column>
             <el-table-column
               prop="example"
               label="示例"/>
@@ -91,7 +101,7 @@
           <div class="interface-info-request-title">
             example:</div>
           <p>
-            {{ json }}
+            {{ info.req_example }}
           </p>
         </div>
       </c-view-panel-info-card>
@@ -107,14 +117,19 @@
             <el-table-column
               prop="name"
               label="参数名称"
-              width="180"/>
+              width="240"/>
             <el-table-column
               prop="param_type"
               label="参数类型"
               width="180"/>
             <el-table-column
               prop="required"
-              label="是否必须"/>
+              label="是否必须"
+              width="100">
+              <template slot-scope="scope">
+                <span>{{ scope.row.required ? '是':'否' }}</span>
+              </template>
+            </el-table-column>
             <el-table-column
               prop="default"
               label="默认值"/>
@@ -125,7 +140,7 @@
           <div class="interface-info-request-title">
             example:</div>
           <p>
-            {{ json }}
+            {{ info.res_example }}
           </p>
         </div>
       </c-view-panel-info-card>

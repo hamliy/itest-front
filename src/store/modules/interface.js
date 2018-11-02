@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-10-09 16:21:20
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-12 11:06:09
+ ** @last_modified_date 2018-10-30 13:34:29
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -16,6 +16,8 @@ import {
   createInterface,
   updateInterface,
   deleteInterface,
+  updateInterfaceBasic,
+  updateInterfaceBody,
   createTheme,
   createThemeSub,
   createThemeInterface,
@@ -42,6 +44,12 @@ const actions = {
   },
   [behavior.DELETE_INTERFACE](context, params) {
     return deleteInterface(params);
+  },
+  [behavior.UPDATE_INTERFACE_BASIC](context, params) {
+    return updateInterfaceBasic(params);
+  },
+  [behavior.UPDATE_INTERFACE_BODY](context, params) {
+    return updateInterfaceBody(params);
   },
   [behavior.CREATE_THEME](context, params) {
     return createTheme(params);

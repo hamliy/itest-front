@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-10-09 16:23:26
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-12 11:04:52
+ ** @last_modified_date 2018-10-30 13:34:56
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -20,6 +20,8 @@ export default {
       behavior.CREATE_INTERFACE,
       behavior.UPDATE_INTERFACE,
       behavior.DELETE_INTERFACE,
+      behavior.UPDATE_INTERFACE_BASIC,
+      behavior.UPDATE_INTERFACE_BODY,
       behavior.CREATE_THEME,
       behavior.CREATE_THEME_SUB,
       behavior.CREATE_THEME_INTERFACE,

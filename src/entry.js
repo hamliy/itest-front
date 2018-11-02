@@ -4,15 +4,17 @@
  ** @author wenkanglin <wenkang_lin@kingdee.com>
  ** @date 2018-03-22 09:51:43
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-09 10:07:57
+ ** @last_modified_date 2018-10-30 20:01:42
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import Viewer from 'v-viewer';
 import 'core-js/shim';
 import { isDev } from 'envUtil';
+import '../node_modules/viewerjs/dist/viewer.css';
 import './deploy/promise';
 import './deploy/component';
 import './deploy/directive';
@@ -32,6 +34,8 @@ Vue.config.productionTip = false;
 Vue.config.errorHandler = function VueErrorHandler(err, vm, info) {
   console.error(err, vm, info);
 };
+
+Vue.use(Viewer);
 
 Vue.mixin(mTitle);
 Vue.use(ElementUI);

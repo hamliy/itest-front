@@ -4,7 +4,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-25 14:39:34
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-08 15:11:25
+ ** @last_modified_date 2018-10-30 20:04:18
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -73,6 +73,27 @@ export default [
         name: '基本信息',
         component: () => import('views/v-use-case'),
         meta: { title: '用例数据', icon: 'table' }
+      }
+    ]
+  },
+  {
+    path: '/test-data',
+    component: () => import('components/global/LMain'),
+    redirect: '/test-data/image',
+    name: '数据管理',
+    meta: { title: '数据', icon: 'example' },
+    children: [
+      {
+        path: 'image',
+        name: '图片数据',
+        component: () => import('views/v-data/v-data-images/VDataImages'),
+        meta: { title: '图片数据', icon: 'table' }
+      },
+      {
+        path: 'params',
+        name: '参数数据',
+        component: () => import('views/v-use-case'),
+        meta: { title: '图片数据', icon: 'table' }
       }
     ]
   },

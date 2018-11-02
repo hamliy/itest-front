@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:53:16
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-26 10:47:38
+  -- @last_modified_date 2018-10-30 13:17:12
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -18,7 +18,8 @@
     </el-tab-pane>
     <el-tab-pane label="编辑">
       <c-interface-info-edit
-        :info="info"/>
+        :source-info="info"
+        @updateInfo="handleUpdateInfo"/>
     </el-tab-pane>
     <el-tab-pane label="调试">
       <c-interface-info-debug
@@ -48,6 +49,11 @@
       return {
         tabPosition: 'top'
       };
+    },
+    methods: {
+      handleUpdateInfo(type, info) {
+        this.$emit('updateInfo', type, info);
+      }
     }
   };
 </script>

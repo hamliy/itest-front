@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-26 10:46:01
+  -- @last_modified_date 2018-10-30 13:37:57
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -13,6 +13,7 @@
 <template>
   <div class="content-page">
     <c-interface-tree-card
+      ref="treeCard"
       :tree-data="treeDatas"
       @createTheme="handleCreateTheme"
       @nodeClick="handleNodeClick"
@@ -23,7 +24,8 @@
     <c-info-panel>
       <c-interface-info
         v-if="isSelectInterface"
-        :info="interfaceInfo"/>
+        :info="interfaceInfo"
+        @updateInfo="updateInterfaceInfo"/>
       <c-theme-info
         v-else
         :info="themeInfo"/>
@@ -96,7 +98,15 @@ export default {
         name: '',
         desc: '',
         path: '',
-        mothed: 'GET'
+        method: 'GET',
+        content_type: '',
+        req_body_type: 'json',
+        req_body_params: [],
+        req_example: '',
+        res_body_type: 'json',
+        res_body_params: [],
+        res_example: '',
+        headers: []
       }
     };
   },
@@ -109,6 +119,24 @@ export default {
     this.getTheme();
   },
   methods: {
+    initInterfaceInfo() {
+      this.interfaceInfo = {
+        name: '',
+        desc: '',
+        path: '',
+        method: 'GET',
+        content_type: '',
+        req_body_type: 'json',
+        req_body_params: [],
+        req_example: '',
+        res_body_type: 'json',
+        res_body_params: [],
+        res_example: '',
+        headers: [],
+        theme_id: '',
+        sub_theme_name: ''
+      };
+    },
     // 判断树节点类型
     judgeNode(node) {
       console.log(node);
@@ -134,19 +162,18 @@ export default {
       });
     },
     // 获取接口信息
-    getInterface(interfaceId) {
-      this.interfaceInfo = {
-        name: '',
-        desc: '',
-        path: '',
-        mothed: 'GET'
-      };
+    getInterface(node, data) {
+      this.initInterfaceInfo();
       this[cInterface.GET_INTERFACE]({
-        interface_id: interfaceId
+        interface_id: data.interface_id
       })
       .then(res => {
+        console.log(node);
         this.interfaceInfo = Object.assign({}, res.data);
-        console.log(this.interfaceInfo.name);
+        this.interfaceInfo.theme_id = node.level === 2 ?
+          node.parent.data._id : node.parent.parent.data._id;
+        this.interfaceInfo.sub_theme_name = node.level === 2 ?
+          '' : node.parent.data.name;
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
@@ -184,7 +211,7 @@ export default {
         this.$_mUtil_messageError(err);
       });
     },
-    removeTheme(node, data) {
+    removeTheme(node) {
       const params = {
         theme_id: node.data._id
       };
@@ -195,13 +222,15 @@ export default {
           message: '删除成功。',
           type: 'success'
         });
-        this.removeNode(node, data);
+        this.getTheme();
+        this.$refs.treeCard.$refs
+        .interfaceTree.setCurrentNode(node.parent.data);
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
       });
     },
-    removeThemeSub(node, data) {
+    removeThemeSub(node) {
       const params = {
         theme_id: node.parent.data._id,
         sub_theme_name: node.data.name
@@ -213,19 +242,19 @@ export default {
           message: '删除成功。',
           type: 'success'
         });
-        this.removeNode(node, data);
+        this.getTheme();
+        this.$refs.treeCard.$refs
+        .interfaceTree.setCurrentNode(node.parent.data);
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
       });
     },
-    removeThemeInterface(node, data) {
-      console.log(node);
-      console.log(node.data.interface_id);
+    removeThemeInterface(node) {
       const params = {
         theme_id: node.level === 2 ?
           node.parent.data._id : node.parent.parent.data._id,
-        sub_theme_name: node.level === 2 ? '' : node.data.name,
+        sub_theme_name: node.level === 2 ? '' : node.parent.data.name,
         interface_id: node.data.interface_id
       };
       this[cInterface.REMOVE_THEME_INTERFACE](params)
@@ -235,7 +264,9 @@ export default {
           message: '删除成功。',
           type: 'success'
         });
-        this.removeNode(node, data);
+        this.getTheme();
+        this.$refs.treeCard.$refs
+        .interfaceTree.setCurrentNode(node.parent.data);
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
@@ -246,6 +277,44 @@ export default {
       const list = parent.data.list || parent.data;
       const index = list.findIndex(d => d._id === data._id);
       list.splice(index, 1);
+    },
+    // 接口基本信息保存
+    basicSave(info) {
+      this[cInterface.UPDATE_INTERFACE_BASIC](info)
+      .then(() => {
+        this.$message({
+          showClose: true,
+          message: '更新数据成功。',
+          type: 'success'
+        });
+        this.interfaceInfo = Object.assign({}, info);
+        this.getTheme();
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
+    // 接口其他信息信息保存
+    updateBodyInfo(type, info) {
+      info.update_type = type;
+      this[cInterface.UPDATE_INTERFACE_BODY](info)
+      .then(() => {
+        this.$message({
+          showClose: true,
+          message: '更新数据成功。',
+          type: 'success'
+        });
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
+    updateInterfaceInfo(type, info) {
+      if (type === 'basicInfo') {
+        this.basicSave(info);
+      } else {
+        this.updateBodyInfo(type, info);
+      }
     },
     handleCreateTheme() {
       this.dialogThemeVisible = true;
@@ -281,7 +350,7 @@ export default {
       const nodeType = this.judgeNode(node);
       if (nodeType === 'interface') {
         this.isSelectInterface = true;
-        this.getInterface(data.interface_id);
+        this.getInterface(node, data);
       } else {
         this.isSelectInterface = false;
         this.themeInfo = {
