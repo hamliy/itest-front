@@ -5,7 +5,7 @@
  ** @author wenkanglin <wenkang_lin@kingdee.com>
  ** @date 2017-12-13 14:18:04
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-09-19 10:28:42
+ ** @last_modified_date 2018-11-26 17:55:55
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -15,14 +15,13 @@ const _ip = require('ip').address();
 
 module.exports = {
   dev: {
-    port: 3000,
+    port: 3001,
     host: _ip,
+    open: true,
     env: dev,
     quiet: false,
     proxy: {
-      '/api': {
-        target: 'http://172.20.166.138:8083'
-      }
+      '/api': { target: 'http://172.20.166.138:8083' }
     },
     dllPattern: '',
     dllManifest: 'dev-manifest.json'

@@ -4,7 +4,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-19 11:18:44
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-09-20 15:13:48
+  -- @last_modified_date 2018-11-26 17:29:09
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -15,16 +15,16 @@
     auto-complete="on"
     label-position="left">
     <h3 class="title">itest</h3>
-    <el-form-item prop="username">
+    <el-form-item prop="email">
       <span class="svg-container svg-container_login">
         <svg-icon icon-class="user"/>
       </span>
       <el-input
-        v-model="username"
-        name="username"
+        v-model="email"
+        name="email"
         type="text"
         auto-complete="on"
-        placeholder="username"/>
+        placeholder="email"/>
     </el-form-item>
     <el-form-item prop="password">
       <span class="svg-container">
@@ -51,7 +51,7 @@
       </el-button>
     </el-form-item>
     <div class="tips">
-      <span style="margin-right:20px;">username: admin</span>
+      <span style="margin-right:20px;">email: admin@admin.com</span>
       <span> password: admin</span>
     </div>
   </el-form>
@@ -62,14 +62,6 @@
 export default {
   name: 'CLogin',
   props: {
-    username: {
-      type: String,
-      required: true
-    },
-    password: {
-      type: String,
-      required: true
-    },
     loading: {
       type: Boolean,
       default: false
@@ -77,7 +69,9 @@ export default {
   },
   data() {
     return {
-      pwdType: 'password'
+      pwdType: 'password',
+      email: 'admin@admin.com',
+      password: 'admin'
     };
   },
   methods: {
@@ -90,17 +84,17 @@ export default {
     },
     handleLogin() {
       if (this.checkName() || this.checkPassword()) {
-        this.$toast('用户名或密码不能为空');
+        this.$toast('邮箱或密码不能为空');
         return false;
       }
       if (this.loading) {
         return false;
       }
-      this.$emit('login');
+      this.$emit('login', this.email, this.password);
       return true;
     },
     checkName() {
-      return this.username.trim() === '';
+      return this.email.trim() === '';
     },
     checkPassword() {
       return this.password.trim() === '';

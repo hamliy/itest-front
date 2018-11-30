@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-10-09 16:23:26
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-30 13:34:56
+ ** @last_modified_date 2018-11-26 15:51:02
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -16,19 +16,11 @@ export default {
   methods: {
     ...mapActions([
       behavior.GET_INTERFACE,
-      behavior.QUERY_INTERFACE,
+      behavior.SEARCH_INTERFACE,
       behavior.CREATE_INTERFACE,
       behavior.UPDATE_INTERFACE,
       behavior.DELETE_INTERFACE,
-      behavior.UPDATE_INTERFACE_BASIC,
-      behavior.UPDATE_INTERFACE_BODY,
-      behavior.CREATE_THEME,
-      behavior.CREATE_THEME_SUB,
-      behavior.CREATE_THEME_INTERFACE,
-      behavior.REMOVE_THEME,
-      behavior.REMOVE_THEME_SUB,
-      behavior.REMOVE_THEME_INTERFACE,
-      behavior.GET_THEME
+      behavior.GET_INTERFACE_HISTORY
     ])
   }
 };

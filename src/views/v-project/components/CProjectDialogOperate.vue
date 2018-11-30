@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-27 10:35:43
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-09-27 17:23:55
+  -- @last_modified_date 2018-11-30 16:52:28
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -30,7 +30,7 @@
         <el-input v-model="form.name"/>
       </el-form-item>
       <el-form-item label="项目类型">
-        <el-select v-model="form.type" placeholder="请选择类型">
+        <el-select v-model="form.projectType" placeholder="请选择类型">
           <el-option label="WEB" value="web"/>
           <el-option label="APP" value="app"/>
           <el-option label="其他" value="other"/>
@@ -41,7 +41,7 @@
       </el-form-item>
       <el-form-item label="项目描述">
         <el-input
-          v-model="form.description"
+          v-model="form.desc"
           type="textarea"/>
       </el-form-item>
     </el-form>

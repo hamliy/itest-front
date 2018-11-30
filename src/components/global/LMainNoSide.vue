@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-08 10:25:53
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-08 16:19:01
+  -- @last_modified_date 2018-11-30 16:04:41
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -27,7 +27,25 @@ import LContent from '../components/LContent';
 
 export default {
   name: 'LMainNoSide',
-  components: { CHeaderNavbar, LContent }
+  components: { CHeaderNavbar, LContent },
+  provide() {
+    return {
+      reload: this.reload
+    };
+  },
+  data() {
+    return {
+      isRouterAlive: true
+    };
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(() => {
+        this.isRouterAlive = true;
+      });
+    }
+  }
 };
 </script>
 

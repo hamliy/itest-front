@@ -4,7 +4,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-19 17:44:55
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-09-19 17:48:40
+ ** @last_modified_date 2018-11-26 17:10:52
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -19,7 +19,11 @@ export default {
     ...mapActions([
       behavior.LOGIN,
       behavior.LOGOUT,
-      pbehavior.GET_PROJECTS
+      behavior.REGISTER,
+      behavior.REFRESH_TOKEN,
+      behavior.UPDATE_INFO,
+      behavior.UPDATE_PASSWORD,
+      pbehavior.GET_PROJECT
     ])
   }
 };

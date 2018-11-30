@@ -4,7 +4,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-18 16:52:47
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-10 17:27:55
+  -- @last_modified_date 2018-11-29 16:32:48
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -29,6 +29,9 @@ detail： 选择项目
         <el-dropdown-item
           divided
           @click.native="handleViewProjects">查看所有项目</el-dropdown-item>
+        <el-dropdown-item
+          divided
+          @click.native="handleLogout">退出</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -56,6 +59,9 @@ export default {
 
     handleViewProjects() {
       this.$router.push({ path: '/projects' });
+    },
+    handleLogout() {
+      this.$emit('logout');
     }
 
   }

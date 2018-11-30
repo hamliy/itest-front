@@ -4,7 +4,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-19 16:26:52
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-09-20 11:13:06
+ ** @last_modified_date 2018-11-26 16:18:56
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -18,3 +18,7 @@ export const SET_NAME = 'SET_NAME';
 export const LOGIN = 'LOGIN';
 export const GET_INFO = 'GET_INFO';
 export const LOGOUT = 'LOGOUT';
+export const REGISTER = 'REGISTER';
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
+export const UPDATE_INFO = 'UPDATE_INFO';
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';

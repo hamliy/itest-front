@@ -1,15 +1,17 @@
 /**
  ** ********************************************************
- ** @file data.js
+ ** @file image.js
  ** @description :
  ** @author hanli <lihan_li@kingdee.com>
- ** @date 2018-10-30 20:40:16
+ ** @date 2018-11-26 16:26:16
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-30 20:41:00
+ ** @last_modified_date 2018-11-26 16:27:44
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
 // actions
 export const GET_IMAGE = 'GET_IMAGE';
-export const QUERY_IMAGES = 'QUERY_IMAGES';
+export const SEARCH_IMAGE = 'SEARCH_IMAGE';
 export const CREATE_IMAGE = 'CREATE_IMAGE';
+export const UPDATE_IMAGE = 'UPDATE_IMAGE';
+export const DELETE_IMAGE = 'DELETE_IMAGE';

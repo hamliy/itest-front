@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-30 13:37:57
+  -- @last_modified_date 2018-11-26 17:12:36
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -148,19 +148,19 @@ export default {
       return 'interface';
     },
 
-    getTheme() {
-      this[cInterface.GET_THEME]({})
-      .then(res => {
-        const nodes = res.data.data;
-        nodes.forEach(node => {
-          node.list = node.sub_themes.concat(node.list);
-        });
-        this.treeDatas = nodes;
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
+    // getTheme() {
+    //   this[cInterface.GET_THEME]({})
+    //   .then(res => {
+    //     const nodes = res.data.data;
+    //     nodes.forEach(node => {
+    //       node.list = node.sub_themes.concat(node.list);
+    //     });
+    //     this.treeDatas = nodes;
+    //   })
+    //   .catch(err => {
+    //     this.$_mUtil_messageError(err);
+    //   });
+    // },
     // 获取接口信息
     getInterface(node, data) {
       this.initInterfaceInfo();
@@ -180,98 +180,98 @@ export default {
       });
     },
 
-    addInterface(formData) {
-      this[cInterface.CREATE_THEME_INTERFACE](formData)
-      .then(() => {
-        this.dialogInterfaceVisible = false;
-        this.$message({
-          showClose: true,
-          message: '新增接口成功。',
-          type: 'success'
-        });
-        this.getTheme();
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
-    addTheme(formData) {
-      this[this.themeType === 'theme' ?
-        cInterface.CREATE_THEME : cInterface.CREATE_THEME_SUB](formData)
-      .then(() => {
-        this.dialogThemeVisible = false;
-        this.$message({
-          showClose: true,
-          message: `${this.textThemeMap[this.themeType]}成功。`,
-          type: 'success'
-        });
-        this.getTheme();
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
-    removeTheme(node) {
-      const params = {
-        theme_id: node.data._id
-      };
-      this[cInterface.REMOVE_THEME](params)
-      .then(() => {
-        this.$message({
-          showClose: true,
-          message: '删除成功。',
-          type: 'success'
-        });
-        this.getTheme();
-        this.$refs.treeCard.$refs
-        .interfaceTree.setCurrentNode(node.parent.data);
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
-    removeThemeSub(node) {
-      const params = {
-        theme_id: node.parent.data._id,
-        sub_theme_name: node.data.name
-      };
-      this[cInterface.REMOVE_THEME_SUB](params)
-      .then(() => {
-        this.$message({
-          showClose: true,
-          message: '删除成功。',
-          type: 'success'
-        });
-        this.getTheme();
-        this.$refs.treeCard.$refs
-        .interfaceTree.setCurrentNode(node.parent.data);
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
-    removeThemeInterface(node) {
-      const params = {
-        theme_id: node.level === 2 ?
-          node.parent.data._id : node.parent.parent.data._id,
-        sub_theme_name: node.level === 2 ? '' : node.parent.data.name,
-        interface_id: node.data.interface_id
-      };
-      this[cInterface.REMOVE_THEME_INTERFACE](params)
-      .then(() => {
-        this.$message({
-          showClose: true,
-          message: '删除成功。',
-          type: 'success'
-        });
-        this.getTheme();
-        this.$refs.treeCard.$refs
-        .interfaceTree.setCurrentNode(node.parent.data);
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
+    // addInterface(formData) {
+    //   this[cInterface.CREATE_THEME_INTERFACE](formData)
+    //   .then(() => {
+    //     this.dialogInterfaceVisible = false;
+    //     this.$message({
+    //       showClose: true,
+    //       message: '新增接口成功。',
+    //       type: 'success'
+    //     });
+    //     this.getTheme();
+    //   })
+    //   .catch(err => {
+    //     this.$_mUtil_messageError(err);
+    //   });
+    // },
+    // addTheme(formData) {
+    //   this[this.themeType === 'theme' ?
+    //     cInterface.CREATE_THEME : cInterface.CREATE_THEME_SUB](formData)
+    //   .then(() => {
+    //     this.dialogThemeVisible = false;
+    //     this.$message({
+    //       showClose: true,
+    //       message: `${this.textThemeMap[this.themeType]}成功。`,
+    //       type: 'success'
+    //     });
+    //     this.getTheme();
+    //   })
+    //   .catch(err => {
+    //     this.$_mUtil_messageError(err);
+    //   });
+    // },
+    // removeTheme(node) {
+      // const params = {
+      //   theme_id: node.data._id
+      // };
+      // this[cInterface.REMOVE_THEME](params)
+      // .then(() => {
+      //   this.$message({
+      //     showClose: true,
+      //     message: '删除成功。',
+      //     type: 'success'
+      //   });
+      //   this.getTheme();
+      //   this.$refs.treeCard.$refs
+      //   .interfaceTree.setCurrentNode(node.parent.data);
+      // })
+      // .catch(err => {
+      //   this.$_mUtil_messageError(err);
+      // });
+    // },
+    // removeThemeSub(node) {
+      // const params = {
+      //   theme_id: node.parent.data._id,
+      //   sub_theme_name: node.data.name
+      // };
+      // this[cInterface.REMOVE_THEME_SUB](params)
+      // .then(() => {
+      //   this.$message({
+      //     showClose: true,
+      //     message: '删除成功。',
+      //     type: 'success'
+      //   });
+      //   this.getTheme();
+      //   this.$refs.treeCard.$refs
+      //   .interfaceTree.setCurrentNode(node.parent.data);
+      // })
+      // .catch(err => {
+      //   this.$_mUtil_messageError(err);
+      // });
+    // },
+    // removeThemeInterface(node) {
+    //   const params = {
+    //     theme_id: node.level === 2 ?
+    //       node.parent.data._id : node.parent.parent.data._id,
+    //     sub_theme_name: node.level === 2 ? '' : node.parent.data.name,
+    //     interface_id: node.data.interface_id
+    //   };
+      // this[cInterface.REMOVE_THEME_INTERFACE](params)
+      // .then(() => {
+      //   this.$message({
+      //     showClose: true,
+      //     message: '删除成功。',
+      //     type: 'success'
+      //   });
+      //   this.getTheme();
+      //   this.$refs.treeCard.$refs
+      //   .interfaceTree.setCurrentNode(node.parent.data);
+      // })
+      // .catch(err => {
+      //   this.$_mUtil_messageError(err);
+      // });
+    // },
     removeNode(node, data) {
       const parent = node.parent || {};
       const list = parent.data.list || parent.data;
@@ -280,7 +280,7 @@ export default {
     },
     // 接口基本信息保存
     basicSave(info) {
-      this[cInterface.UPDATE_INTERFACE_BASIC](info)
+      this[cInterface.UPDATE_INTERFACE](info)
       .then(() => {
         this.$message({
           showClose: true,
@@ -297,7 +297,7 @@ export default {
     // 接口其他信息信息保存
     updateBodyInfo(type, info) {
       info.update_type = type;
-      this[cInterface.UPDATE_INTERFACE_BODY](info)
+      this[cInterface.UPDATE_INTERFACE](info)
       .then(() => {
         this.$message({
           showClose: true,

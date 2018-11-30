@@ -4,7 +4,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-19 17:44:55
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-09-27 16:43:45
+ ** @last_modified_date 2018-11-29 17:13:18
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -24,11 +24,23 @@ export default {
     },
     $_mUtil_messageError(error) {
       if (error instanceof Error) {
-        this.$message({
-          showClose: true,
-          message: error.message,
-          type: 'error'
-        });
+        if (
+          'response' in error &&
+          'status' in error.response &&
+          error.response.status === 401
+        ) {
+          this.$message({
+            showClose: true,
+            message: '会话失效，请重新登录',
+            type: 'error'
+          });
+        } else {
+          this.$message({
+            showClose: true,
+            message: error.message,
+            type: 'error'
+          });
+        }
       } else if (error.errorCode) {
         this.$message({
           showClose: true,
@@ -42,6 +54,7 @@ export default {
           type: 'error'
         });
       } else {
+        console.log(error);
         this.$message({
           showClose: true,
           message: JSON.stringify(error.data.error),

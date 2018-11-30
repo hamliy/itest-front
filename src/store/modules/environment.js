@@ -5,14 +5,14 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-29 10:02:35
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-08 11:18:35
+ ** @last_modified_date 2018-11-26 16:20:28
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
 
 import {
   getEnvironment,
-  queryEnvironment,
+  searchEnvironment,
   createEnvironment,
   updateEnvironment,
   deleteEnvironment
@@ -24,8 +24,8 @@ const actions = {
   [behavior.GET_ENVIRONMENT](context, params) {
     return getEnvironment(params);
   },
-  [behavior.QUERY_ENVIRONMENT](context, params) {
-    return queryEnvironment(params);
+  [behavior.SEARCH_ENVIRONMENT](context, params) {
+    return searchEnvironment(params);
   },
   [behavior.CREATE_ENVIRONMENT](context, params) {
     return createEnvironment(params);

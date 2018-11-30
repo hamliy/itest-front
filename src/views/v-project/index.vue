@@ -4,7 +4,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-25 16:38:10
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-10 17:29:36
+  -- @last_modified_date 2018-11-30 17:19:25
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -33,7 +33,7 @@
       <el-pagination
         :current-page="listQuery.page"
         :page-sizes="[5, 10, 20, 50]"
-        :page-size="listQuery.page_size"
+        :page-size="listQuery.pageSize"
         :total="total"
         background
         layout="total, sizes, prev, pager, next, jumper"
@@ -69,9 +69,9 @@ export default {
       projects: [],
       listLoading: false,
       listQuery: {
-        query_name: '',
+        query: '',
         page: 1,
-        page_size: 10
+        pageSize: 10
       },
       total: 0,
       dialogVisible: false,
@@ -79,7 +79,7 @@ export default {
       formData: {
         projectId: undefined,
         name: '',
-        type: 'web',
+        projectType: 'web',
         version: '',
         description: ''
       },
@@ -96,7 +96,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      this[project.QUERY_PROJECTS](this.listQuery)
+      this[project.SEARCH_PROJECT](this.listQuery)
       .then(response => {
         this.projects = response.data.data;
         this.total = response.data.total;
@@ -108,7 +108,7 @@ export default {
       });
     },
     query(nameQuery) {
-      this.listQuery.query_name = nameQuery;
+      this.listQuery.query = nameQuery;
       this.fetchData();
     },
     handlePageChange(val) {
@@ -116,14 +116,14 @@ export default {
       this.fetchData();
     },
     handleSizeChange(val) {
-      this.listQuery.page_size = val;
+      this.listQuery.pageSize = val;
       this.fetchData();
     },
     resetFrom() {
       this.formData = {
         id: undefined,
         name: '',
-        type: 'web',
+        projectType: 'web',
         version: '',
         description: ''
       };
@@ -132,7 +132,7 @@ export default {
       this.formData = {
         id: row._id,
         name: row.name,
-        type: row.type,
+        projectType: row.type,
         version: row.version,
         description: row.description
       };
@@ -164,7 +164,7 @@ export default {
     handleDelete(data) {
       const message = '确定要删除该项目，是否继续？';
       const title = '删除操作';
-      const projectId = data._id;
+      const projectId = data.id;
       this.$confirm(message, title, {
         confirmButtonText: '确定',
         cancelButtonText: '取消',

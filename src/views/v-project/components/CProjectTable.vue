@@ -4,7 +4,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-25 16:38:10
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-09-28 17:09:06
+  -- @last_modified_date 2018-11-30 17:18:42
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -48,7 +48,7 @@
       align="center"
       width="120">
       <template slot-scope="scope">
-        {{ scope.row.type }}
+        {{ scope.row.projectType }}
       </template>
     </el-table-column>
     <el-table-column
@@ -56,7 +56,7 @@
       align="center"
       width="200">
       <template slot-scope="scope">
-        {{ scope.row.create_info.time.$date
+        {{ scope.row.createTime.$date
         | parseTime('{y}-{m}-{d} {h}:{i}') }}
       </template>
     </el-table-column>
@@ -65,7 +65,7 @@
       align="center"
       width="200">
       <template slot-scope="scope">
-        {{ scope.row.update_info | updateTime()
+        {{ scope.row.modifiedTime | updateTime()
         | formatTime('{y}-{m}-{d} {h}:{i}') }}
       </template>
     </el-table-column>
@@ -102,7 +102,7 @@
       formatTime,
       updateTime(info) {
         if (info) {
-          return info.time.$date;
+          return info.$date;
         }
         return '';
       }

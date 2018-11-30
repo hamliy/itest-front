@@ -4,7 +4,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-17 10:40:27
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-08 16:15:46
+  -- @last_modified_date 2018-11-30 16:07:08
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -28,7 +28,8 @@
           :selected-project="$store.getters.selectedProject"
           :projects="$store.getters.projects"
           class="items-container"
-          @select-project="handleSelect"/>
+          @select-project="handleSelect"
+          @logout="handleLogout"/>
       </el-col>
     </el-row>
   </div>
@@ -36,6 +37,8 @@
 
 <script>
   import mProject from 'mixins/m-project';
+  import mUser from 'mixins/m-user';
+  import * as mbehavior from 'store/constants/user';
   import * as behavior from 'store/constants/toggle';
   import * as pbehavior from 'store/constants/project';
   import CHeaderNavbarHamburger from '../components/CHeaderNavbarHamburger';
@@ -45,7 +48,7 @@
   export default {
     name: 'CHeaderNavbar',
     components: { CHeaderNavbarHamburger, CHeaderNavbarProject, CBreadcrumb },
-    mixins: [mProject],
+    mixins: [mProject, mUser],
     props: {
       showHamburger: {
         type: Boolean,
@@ -53,16 +56,26 @@
       }
     },
     created() {
-      this.getProjects();
+      this.getProject();
     },
     methods: {
-      getProjects() {
-        this[pbehavior.GET_PROJECTS]().then()
-        .catch(this.$_mUtil_toastError);
+      getProject() {
+        this[pbehavior.GET_PROJECT]().then()
+        .catch(this.$_mUtil_messageError);
       },
 
       toggleSideBar() {
         this.$store.dispatch(behavior.TOGGLE_SIDEBAR);
+      },
+      handleLogout() {
+        this[mbehavior.LOGOUT]().then(() => {
+          this.$message({
+            showClose: true,
+            message: '退出成功',
+            type: 'success'
+          });
+          this.$router.push({ path: '/' });
+        }).catch(this.$_mUtil_messageError);
       },
       handleSelect(project) {
         this.$store.commit(pbehavior.SET_SELECT_PROJECT, project);

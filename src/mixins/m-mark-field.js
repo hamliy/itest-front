@@ -1,25 +1,25 @@
 /**
  ** ********************************************************
- ** @file m-environment.js
+ ** @file m-mark-field.js
  ** @description :
  ** @author hanli <lihan_li@kingdee.com>
- ** @date 2018-09-29 10:55:38
+ ** @date 2018-11-26 16:48:01
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-26 16:20:35
+ ** @last_modified_date 2018-11-26 16:53:50
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
-import * as behavior from 'store/constants/environment';
+import * as behavior from 'store/constants/mark-field';
 import { mapActions } from 'vuex';
 
 export default {
   methods: {
     ...mapActions([
-      behavior.GET_ENVIRONMENT,
-      behavior.SEARCH_ENVIRONMENT,
-      behavior.CREATE_ENVIRONMENT,
-      behavior.UPDATE_ENVIRONMENT,
-      behavior.DELETE_ENVIRONMENT
+      behavior.GET_MARK_FIELD,
+      behavior.SEARCH_MARK_FIELD,
+      behavior.CREATE_MARK_FIELD,
+      behavior.UPDATE_MARK_FIELD,
+      behavior.DELETE_MARK_FIELD
     ])
   }
 };

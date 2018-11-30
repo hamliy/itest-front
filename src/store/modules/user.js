@@ -4,18 +4,26 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-19 16:26:56
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-09-29 14:43:54
+ ** @last_modified_date 2018-11-27 16:14:20
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
 
-import { getToken, setToken, removeToken } from 'utils/cookie';
+import { setAuth, removeAuth } from 'utils/local-storage';
 
 import * as behavior from '../constants/user';
-import { login, logout } from '../../api/user';
+import {
+  login,
+  logout,
+  register,
+  refreshToken,
+  updateInfo,
+  updatePassword
+} from '../../api/user';
 
 const state = {
-  token: getToken(),
+  // token: getToken(),
+  // refreshToken: getRefreshToken(),
   name: '',
   userInfo: {}
 };
@@ -35,18 +43,25 @@ const mutations = {
 };
 
 const onLoginSuccess = response => {
-  setToken(response.data.token);
+  const auth = {
+    token_type: 'Bearer',
+    access_token: response.data.access_token,
+    refresh_token: response.data.refresh_token,
+    access_token_exp: response.data.access_token_exp,
+    refresh_token_exp: response.data.refresh_token_exp
+  };
+  setAuth(JSON.stringify(auth));
   return Promise.resolve();
 };
 
 const onLogoutSuccess = () => {
-  removeToken();
+  removeAuth();
   return Promise.resolve();
 };
 
 const actions = {
-  [behavior.LOGIN](context, { username, password }) {
-    return login(username, password).then(response => {
+  [behavior.LOGIN](context, { email, password }) {
+    return login(email, password).then(response => {
       onLoginSuccess(response);
     });
   },
@@ -54,6 +69,18 @@ const actions = {
     return logout().then(response => {
       onLogoutSuccess(response);
     });
+  },
+  [behavior.REGISTER](context, params) {
+    return register(params);
+  },
+  [behavior.REFRESH_TOKEN](context, params) {
+    return refreshToken(params);
+  },
+  [behavior.UPDATE_INFO](context, params) {
+    return updateInfo(params);
+  },
+  [behavior.UPDATE_PASSWORD](context, params) {
+    return updatePassword(params);
   }
 };
 

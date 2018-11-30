@@ -4,7 +4,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-19 11:14:20
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-09-20 11:32:33
+  -- @last_modified_date 2018-11-29 16:17:24
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -13,8 +13,6 @@
   <div class="login-container">
     <c-login
       ref="loginForm"
-      :username="username"
-      :password="password"
       :loading="loading"
       @login="login"/>
   </div>
@@ -34,8 +32,6 @@ export default {
   mixins: [mUtil, mUser],
   data() {
     return {
-      username: 'admin',
-      password: 'admin',
       loading: false
     };
   },
@@ -43,19 +39,15 @@ export default {
     onLoginSuccess() {
       this.$router.push({ path: '/' });
     },
-    login() {
+    login(email, password) {
       this.loading = true;
-      console.log({
-        username: this.username,
-        password: this.password
-      });
       this[user.LOGIN]({
-        username: this.username,
-        password: this.password
+        email,
+        password
       })
       .finally(() => (this.loading = false))
       .then(this.onLoginSuccess)
-      .catch(this.$_mUtil_toastError);
+      .catch(this.$_mUtil_messageError);
     }
   }
 };

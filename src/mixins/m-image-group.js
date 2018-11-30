@@ -1,25 +1,25 @@
 /**
  ** ********************************************************
- ** @file m-environment.js
+ ** @file m-image-group.js
  ** @description :
  ** @author hanli <lihan_li@kingdee.com>
- ** @date 2018-09-29 10:55:38
+ ** @date 2018-11-26 16:49:03
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-26 16:20:35
+ ** @last_modified_date 2018-11-26 16:52:36
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
-import * as behavior from 'store/constants/environment';
+import * as behavior from 'store/constants/image-group';
 import { mapActions } from 'vuex';
 
 export default {
   methods: {
     ...mapActions([
-      behavior.GET_ENVIRONMENT,
-      behavior.SEARCH_ENVIRONMENT,
-      behavior.CREATE_ENVIRONMENT,
-      behavior.UPDATE_ENVIRONMENT,
-      behavior.DELETE_ENVIRONMENT
+      behavior.GET_IMAGE_GROUP,
+      behavior.SEARCH_IMAGE_GROUP,
+      behavior.CREATE_IMAGE_GROUP,
+      behavior.UPDATE_IMAGE_GROUP,
+      behavior.DELETE_IMAGE_GROUP
     ])
   }
 };

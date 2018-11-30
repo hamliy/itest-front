@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-30 15:36:00
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-11-01 17:47:48
+  -- @last_modified_date 2018-11-29 16:44:43
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -55,9 +55,9 @@
 
 <script>
 
-  import { getSelectedProjectId } from 'utils/cookie';
-  import * as cImage from 'store/constants/data';
-  import mData from 'mixins/m-data';
+  import { getSelectedProjectId } from 'utils/local-storage';
+  import * as cImage from 'store/constants/image';
+  import mImage from 'mixins/m-image';
   import mUtil from 'mixins/m-util';
   import CDataImagesDetail from './components/CDataImagesDetail';
   import CDataImagesViewer from './components/CDataImagesViewer';
@@ -72,7 +72,7 @@
       CDataImagesList,
       CDialogImageCreate
     },
-    mixins: [mData, mUtil],
+    mixins: [mImage, mUtil],
     data() {
       return {
         list: null,
@@ -106,7 +106,7 @@
     },
     methods: {
       fetchData() {
-        this[cImage.QUERY_IMAGES](this.listQuery)
+        this[cImage.SEARCH_IMAGE](this.listQuery)
         .then(res => {
           this.list = res.data.data;
           this.total = res.data.total;
