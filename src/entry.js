@@ -11,10 +11,10 @@
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import Viewer from 'v-viewer';
+// import Viewer from 'viewerjs';
 import 'core-js/shim';
 import { isDev } from 'envUtil';
-import '../node_modules/viewerjs/dist/viewer.css';
+// import '../node_modules/viewerjs/dist/viewer.css';
 import './deploy/promise';
 import './deploy/component';
 import './deploy/directive';
@@ -35,7 +35,7 @@ Vue.config.errorHandler = function VueErrorHandler(err, vm, info) {
   console.error(err, vm, info);
 };
 
-Vue.use(Viewer);
+// Vue.use(Viewer);
 
 Vue.mixin(mTitle);
 Vue.use(ElementUI);

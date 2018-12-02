@@ -15,6 +15,7 @@ export const URL = {
   get: '/interfaces/get',
   search: '/interfaces/search',
   create: '/interfaces/create',
+  getGroupInterface: '/interfaces/group-tree',
   update: '/interfaces/update',
   delete: '/interfaces/delete',
   getHistory: '/interface-history/get'
@@ -23,6 +24,7 @@ export const URL = {
 export const getInterface = params => get(URL.get, params);
 export const searchInterface = params => post(URL.search, params);
 export const createInterface = params => post(URL.create, params);
+export const getGroupInterface = params => post(URL.getGroupInterface, params);
 export const updateInterface = params => post(URL.update, params);
 export const deleteInterface = params => post(URL.delete, params);
 export const getInterfaceHistory = params => get(URL.getHistory, params);

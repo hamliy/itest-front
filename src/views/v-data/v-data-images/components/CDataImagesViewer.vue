@@ -12,7 +12,7 @@
 
 <template>
   <div>
-    <viewer
+    <!-- <viewer
       ref="viewer"
       :images="images"
       :options="options">
@@ -22,7 +22,7 @@
         :key="src"
         width="100%"
         height="600px">
-    </viewer>
+    </viewer> -->
   </div>
 </template>
 

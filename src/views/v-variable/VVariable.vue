@@ -1,6 +1,7 @@
 <!--
   -- --------------------------------------------------------
-  -- @file index.vue
+  -- @file VVariable.vue
+  -- @desc 环境变量
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-25 16:38:10
   -- @last_modified_by hanli <lihan_li@kingdee.com>
@@ -23,12 +24,25 @@
         </c-view-header>
         <c-env-table
           :list-loading="listLoading"
-          :data-set="envSet"
-          @delete="handleDelete"/>
+          :data-set="envSet"/>
+      </el-col>
+      <el-col :span="12">
+        <c-view-header title="变量">
+          <div style="float:right;">
+            <el-button
+              type="primary"
+              round
+              @click="handleCreate('variable')">创建新变量</el-button>
+          </div>
+        </c-view-header>
+        <c-env-table
+          :list-loading="listLoading"
+          :data-set="variableSet"/>
       </el-col>
     </el-row>
     <c-env-dialog-operate
       :visible.sync="dialogVisible"
+      :title="textMap[type]"
       :form-data="formData"
       @confirm="operaEnv"/>
   </div>
@@ -42,7 +56,7 @@ import CEnvTable from './components/CEnvTable';
 import CEnvDialogOperate from './components/CEnvDialogOperate';
 
 export default {
-  name: 'VEnvironment',
+  name: 'VVariable',
   components: {
     CEnvTable,
     CEnvDialogOperate
@@ -54,19 +68,22 @@ export default {
       variableSet: [],
       listLoading: false,
       listQuery: {
-        query: '',
+        query_name: '',
         page: 1,
-        pageSize: 10
+        page_size: 10
       },
       total: 0,
       dialogVisible: false,
       type: '',
       formData: {
         name: '',
-        port: 80,
-        protocol: 'http',
-        ip: '',
-        desc: ''
+        value: '',
+        type: 'env',
+        description: ''
+      },
+      textMap: {
+        variable: '新增变量',
+        env: '新增环境'
       }
     };
   },
@@ -76,24 +93,20 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      this[environment.SEARCH_ENVIRONMENT](this.listQuery)
+      this[environment.GET_ENVIRONMENT](this.listQuery)
       .then(response => {
         const items = response.data.data;
-        if (items) {
-          this.envSet = items.map(v => {
-            this.$set(v, 'edit', false);
-            v.original = {
-              name: v.name,
-              protocol: v.protocol,
-              ip: v.ip,
-              port: v.port,
-              desc: v.desc
-            };
-            return v;
-          });
-        } else {
-          this.envSet = [];
-        }
+        const dataSet = items.map(v => {
+          this.$set(v, 'edit', false);
+          v.original = {
+            name: v.name,
+            value: v.value,
+            description: v.description
+          };
+          return v;
+        });
+        this.envSet = dataSet.filter(v => v.type === 'env');
+        this.variableSet = dataSet.filter(v => v.type === 'variable');
         this.listLoading = false;
       })
       .catch(err => {
@@ -105,13 +118,13 @@ export default {
     initFrom() {
       this.formData = {
         name: '',
-        port: 80,
-        protocol: 'http',
-        ip: '',
-        desc: ''
+        value: '',
+        type: this.type,
+        description: ''
       };
     },
-    handleCreate() {
+    handleCreate(type) {
+      this.type = type;
       this.initFrom();
       this.dialogVisible = true;
     },
@@ -121,7 +134,7 @@ export default {
         this.dialogVisible = false;
         this.$message({
           showClose: true,
-          message: '新增环境成功。',
+          message: `${this.textMap[this.type]}成功。`,
           type: 'success'
         });
         this.fetchData();
@@ -129,32 +142,6 @@ export default {
       .catch(err => {
         this.$_mUtil_messageError(err);
       });
-    },
-    deleteEnv(id) {
-      this[environment.DELETE_ENVIRONMENT]({ id })
-      .then(() => {
-        this.$message({
-          showClose: true,
-          message: '环境删除成功。',
-          type: 'success'
-        });
-        this.fetchData();
-      })
-      .catch(err => {
-        this.$_mUtil_messageError(err);
-      });
-    },
-    handleDelete(data) {
-      const message = '确定要删除该环境，是否继续？';
-      const title = '删除操作';
-      this.$confirm(message, title, {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'danger'
-      }).then(() => {
-        this.deleteEnv(data.id);
-      })
-      .catch(() => '');
     }
   }
 };

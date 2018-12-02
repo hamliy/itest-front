@@ -13,9 +13,9 @@
 <template>
   <c-dialogue
     :visible.sync="i_visible"
-    :title="title"
-    :width="'450px'"
-    :btn-msg="title === '查看项目' ? '确认' :'提交'"
+    :title="'新增环境'"
+    :width="'650px'"
+    :btn-msg="'提交'"
     @confirm="onConfirm"
     @close="closeDialog"
     @open="openDialog">
@@ -28,12 +28,23 @@
       <el-form-item label="名称" prop="name">
         <el-input v-model="form.name"/>
       </el-form-item>
-      <el-form-item label="url" prop="value">
-        <el-input v-model="form.value"/>
+      <el-form-item label="环境地址" prop="ip">
+        <el-input
+          v-model="form.ip"
+          placeholder="ip"
+          class="input-with-select">
+          <el-select slot="prepend" v-model="form.protocol">
+            <el-option label="http" value="http"/>
+            <el-option label="https" value="https"/>
+          </el-select>
+        </el-input>
+      </el-form-item>
+      <el-form-item label="端口号">
+        <el-input v-model="form.port"/>
       </el-form-item>
       <el-form-item label="描述">
         <el-input
-          v-model="form.description"
+          v-model="form.desc"
           type="textarea"/>
       </el-form-item>
     </el-form>
@@ -47,10 +58,6 @@
     name: 'CEnvDialogOperate',
     mixins: [mDialogSynable],
     props: {
-      title: {
-        type: String,
-        default: ''
-      },
       formData: {
         type: Object,
         default: null
@@ -63,10 +70,17 @@
           name: [
             { required: true, message: '请输入名称' }
           ],
-          value: [
-            { required: true, message: '请输入url' }
+          protocol: [
+            { required: true, message: '请选择协议' }
+          ],
+          ip: [
+            { required: true, message: '请输入ip' }
           ]
-        }
+        },
+        protocols: [
+          { label: 'http', value: 'http' },
+          { label: 'https', value: 'https' }
+        ]
       };
     },
     methods: {
@@ -93,3 +107,13 @@
     }
   };
 </script>
+
+<style lang="scss" scope>
+  .el-select .el-input {
+    width: 100px;
+  }
+
+  .el-input-group__prepend {
+    background-color: #fff;
+  }
+</style>

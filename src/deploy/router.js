@@ -45,11 +45,20 @@ const router = new VueRouter({
 
 // 跳转之前判断 是否token过期
 router.beforeEach((to, from, next) => {
-  // 如果auth失败且不是在刷新token，说明 auth失效
   if (to.path === '/login') {
+    // 认证通过
+    if (authCheck('')) {
+      // if (router.query.redirect) {
+      //   const redirect = router.query.redirect;
+      //   next({ path: redirect });
+      // } else {
+      next({ path: '/' });
+      // }
+    }
     next();
     return;
   }
+    // 如果auth失败且不是在刷新token，说明 auth失效
   if (!authCheck('') && !window.isRefreshing) {
     /* 清除本地保存的auth */
     removeAuth();

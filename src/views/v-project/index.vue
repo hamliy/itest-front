@@ -81,7 +81,7 @@ export default {
         name: '',
         projectType: 'web',
         version: '',
-        description: ''
+        desc: ''
       },
       textMap: {
         view: '查看项目',
@@ -125,16 +125,16 @@ export default {
         name: '',
         projectType: 'web',
         version: '',
-        description: ''
+        desc: ''
       };
     },
     initFrom(row) {
       this.formData = {
-        id: row._id,
+        id: row.id,
         name: row.name,
-        projectType: row.type,
+        projectType: row.projectType,
         version: row.version,
-        description: row.description
+        desc: row.desc
       };
     },
     handleCreate() {

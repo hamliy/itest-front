@@ -14,7 +14,7 @@ export const URL = {
   login: '/users/login',
   search: '/users/search',
   register: '/users/create',
-  refresh: '/uses/refreshToken',
+  refresh: '/users/refreshToken',
   updateInfo: '/users/update/info',
   updatePassword: '/users/update/password',
   logout: '/users/logout'

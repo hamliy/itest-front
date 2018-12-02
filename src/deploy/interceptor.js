@@ -11,7 +11,11 @@
  */
 
 import axios from 'axios';
-import { getToken, getRefreshToken } from 'utils/local-storage';
+import {
+  getToken,
+  getRefreshToken,
+  getSelectedProjectId
+} from 'utils/local-storage';
 import { authCheck } from '../utils/auth-check';
 import router from './router';
 
@@ -70,22 +74,22 @@ axios.interceptors.request.use(
       }
       config.headers.Authorization = `Bearer ${getToken()}`;
     }
+    const whiteList = [
+      '/login',
+      '/project/all',
+      '/project/query',
+      '/project/create',
+      '/project/update',
+      '/project/delete',
+      '/project/all'
+    ];
+    // 请求增加项目id参数
+    if (whiteList.indexOf(url) === -1 && getSelectedProjectId()) {
+      const data = config.data || {};
+      data.projectId = getSelectedProjectId();
+      config.data = data;
+    }
     return config;
-    // const whiteList = [
-    //   '/login',
-    //   '/project/all',
-    //   '/project/query',
-    //   '/project/create',
-    //   '/project/update',
-    //   '/project/delete',
-    //   '/project/all'
-    // ];
-    // // 请求增加项目id参数
-    // if (whiteList.indexOf(url) === -1 && getSelectedProjectId()) {
-    //   const data = config.data || {};
-    //   data.project_id = getSelectedProjectId();
-    //   config.data = data;
-    // }
   },
   err => Promise.reject(err)
 );

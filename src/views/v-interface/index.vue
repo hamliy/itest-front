@@ -15,13 +15,12 @@
     <c-interface-tree-card
       ref="treeCard"
       :tree-data="treeDatas"
-      @createTheme="handleCreateTheme"
       @nodeClick="handleNodeClick"
       @createInterface="handleCreateInterface"
-      @createThemeSub="handleCreateThemeSub"
+      @createGroup="handleCreateGroup"
       @remove="handleRemove"
       @edit="handleEdit"/>
-    <c-info-panel>
+    <!-- <c-info-panel>
       <c-interface-info
         v-if="isSelectInterface"
         :info="interfaceInfo"
@@ -29,29 +28,30 @@
       <c-theme-info
         v-else
         :info="themeInfo"/>
-    </c-info-panel>
+    </c-info-panel> -->
     <c-interface-dialog-new
       :visible.sync="dialogInterfaceVisible"
       :title="'新增接口'"
       :form-data="formInterfaceData"
       @confirm="addInterface"/>
-    <c-theme-dialog-new
-      :visible.sync="dialogThemeVisible"
-      :title="textThemeMap[themeType]"
-      :form-data="formThemeData"
-      @confirm="addTheme"/>
+    <c-group-dialog-new
+      :visible.sync="dialogGroupVisible"
+      :form-data="formGroupData"
+      @confirm="addGroup"/>
   </div>
 </template>
 
 <script>
 
 import * as cInterface from 'store/constants/interface';
+import * as cInterfaceGroup from 'store/constants/interface-group';
 import mInterface from 'mixins/m-interface';
+import mInterfaceGroup from 'mixins/m-interface-group';
 import mUtil from 'mixins/m-util';
 import CInterfaceDialogNew from './components/CInterfaceDialogNew';
-import CThemeDialogNew from './components/CThemeDialogNew';
+import CGroupDialogNew from './components/CGroupDialogNew';
 import CInterfaceTreeCard from './components/CInterfaceTreeCard';
-import CThemeInfo from './components/CThemeInfo';
+import CGroupInfo from './components/CGroupInfo';
 import CInterfaceInfo from './components/CInterfaceInfo';
 import CInfoPanel from './components/CInfoPanel';
 
@@ -59,21 +59,21 @@ export default {
   name: 'VInterface',
   components: {
     CInterfaceDialogNew,
-    CThemeDialogNew,
+    CGroupDialogNew,
     CInterfaceTreeCard,
-    CThemeInfo,
+    CGroupInfo,
     CInterfaceInfo,
     CInfoPanel
   },
-  mixins: [mInterface, mUtil],
+  mixins: [mInterface, mInterfaceGroup, mUtil],
   data() {
     return {
       filterText: '',
       dialogInterfaceVisible: false,
-      dialogThemeVisible: false,
+      dialogGroupVisible: false,
       id: 1000,
       isSelectInterface: false,
-      formThemeData: {
+      formGroupData: {
         name: '',
         desc: ''
       },
@@ -83,14 +83,10 @@ export default {
         path: '',
         mothed: 'GET'
       },
-      textThemeMap: {
-        theme: '新增接口分类',
-        subtheme: '新增子分类'
-      },
       type: 'new',
-      themeType: 'new',
+      GroupType: 'new',
       treeDatas: [],
-      themeInfo: {
+      groupInfo: {
         name: '',
         desc: ''
       },
@@ -116,7 +112,7 @@ export default {
     }
   },
   created() {
-    this.getTheme();
+    this.getGroupInterface();
   },
   methods: {
     initInterfaceInfo() {
@@ -147,20 +143,16 @@ export default {
       }
       return 'interface';
     },
-
-    // getTheme() {
-    //   this[cInterface.GET_THEME]({})
-    //   .then(res => {
-    //     const nodes = res.data.data;
-    //     nodes.forEach(node => {
-    //       node.list = node.sub_themes.concat(node.list);
-    //     });
-    //     this.treeDatas = nodes;
-    //   })
-    //   .catch(err => {
-    //     this.$_mUtil_messageError(err);
-    //   });
-    // },
+    // 获取分组接口信息
+    getGroupInterface() {
+      this[cInterface.GET_GROUP_INTERFACE]({})
+      .then(res => {
+        this.treeDatas = res.data.data;
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
     // 获取接口信息
     getInterface(node, data) {
       this.initInterfaceInfo();
@@ -195,22 +187,21 @@ export default {
     //     this.$_mUtil_messageError(err);
     //   });
     // },
-    // addTheme(formData) {
-    //   this[this.themeType === 'theme' ?
-    //     cInterface.CREATE_THEME : cInterface.CREATE_THEME_SUB](formData)
-    //   .then(() => {
-    //     this.dialogThemeVisible = false;
-    //     this.$message({
-    //       showClose: true,
-    //       message: `${this.textThemeMap[this.themeType]}成功。`,
-    //       type: 'success'
-    //     });
-    //     this.getTheme();
-    //   })
-    //   .catch(err => {
-    //     this.$_mUtil_messageError(err);
-    //   });
-    // },
+    addGroup(formData) {
+      this[cInterfaceGroup.CREATE_INTERFACE_GROUP](formData)
+      .then(() => {
+        this.dialogThemeVisible = false;
+        this.$message({
+          showClose: true,
+          message: '新增接口分组成功。',
+          type: 'success'
+        });
+        this.getTheme();
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
     // removeTheme(node) {
       // const params = {
       //   theme_id: node.data._id
@@ -288,7 +279,7 @@ export default {
           type: 'success'
         });
         this.interfaceInfo = Object.assign({}, info);
-        this.getTheme();
+        this.getGroup();
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
@@ -316,10 +307,9 @@ export default {
         this.updateBodyInfo(type, info);
       }
     },
-    handleCreateTheme() {
-      this.dialogThemeVisible = true;
-      this.themeType = 'theme';
-      this.formThemeData = {
+    handleCreateGroup() {
+      this.dialogGroupVisible = true;
+      this.formGroupData = {
         name: '',
         desc: ''
       };
@@ -334,15 +324,6 @@ export default {
         method: 'GET',
         theme_id: node.level === 1 ? node.data._id : node.parent.data._id,
         sub_theme_name: node.level === 1 ? '' : node.data.name
-      };
-    },
-    handleCreateThemeSub(node) {
-      this.dialogThemeVisible = true;
-      this.themeType = 'subtheme';
-      this.formThemeData = {
-        name: '',
-        desc: '',
-        theme_id: node.data._id
       };
     },
     // 点击节点

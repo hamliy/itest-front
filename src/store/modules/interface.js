@@ -14,6 +14,7 @@ import {
   getInterface,
   searchInterface,
   createInterface,
+  getGroupInterface,
   updateInterface,
   deleteInterface,
   getInterfaceHistory
@@ -30,6 +31,9 @@ const actions = {
   },
   [behavior.CREATE_INTERFACE](context, params) {
     return createInterface(params);
+  },
+  [behavior.GET_GROUP_INTERFACE](context, params) {
+    return getGroupInterface(params);
   },
   [behavior.UPDATE_INTERFACE](context, params) {
     return updateInterface(params);

@@ -1,6 +1,6 @@
 <!--
   -- --------------------------------------------------------
-  -- @file CInterfaceDialogNew.vue
+  -- @file CGroupDialogNew.vue
   -- @description : 新增接口窗口
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 14:55:03
@@ -41,7 +41,7 @@
   import mDialogSynable from 'mixins/m-dialog-synable';
 
   export default {
-    name: 'CInterfaceDialogNew',
+    name: 'CGroupDialogNew',
     mixins: [mDialogSynable],
     props: {
       title: {

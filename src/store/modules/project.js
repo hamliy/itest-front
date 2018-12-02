@@ -37,7 +37,7 @@ const getters = {
 const mutations = {
   [behavior.SET_SELECT_PROJECT](_state, selectProject) {
     _state.selectedProject = selectProject;
-    setSelectedProjectId(selectProject._id);
+    setSelectedProjectId(selectProject.id);
   },
   [behavior.SET_PROJECT](_state, projects) {
     _state.projects = projects;
@@ -47,7 +47,7 @@ const mutations = {
     const id = getSelectedProjectId();
     if (id) {
       projects.every(project => {
-        if (project._id === id) {
+        if (project.id === id) {
           _state.selectedProject = project;
           return false;
         }

@@ -29,7 +29,7 @@ export default [
     path: '/environment',
     component: () => import('components/global/LMain'),
     redirect: '/environment/info',
-    name: '环境管理',
+    name: '环境',
     meta: { title: '环境', icon: 'example' },
     children: [
       {
@@ -44,7 +44,7 @@ export default [
     path: '/interface',
     component: () => import('components/global/LMain'),
     redirect: '/interface/info',
-    name: '接口管理',
+    name: '接口',
     meta: { title: '接口', icon: 'example' },
     children: [
       {
@@ -65,7 +65,7 @@ export default [
     path: '/use-case',
     component: () => import('components/global/LMain'),
     redirect: '/use-case/info',
-    name: '用例管理',
+    name: '用例',
     meta: { title: '用例', icon: 'example' },
     children: [
       {
@@ -80,7 +80,7 @@ export default [
     path: '/test-data',
     component: () => import('components/global/LMain'),
     redirect: '/test-data/image',
-    name: '数据管理',
+    name: '数据',
     meta: { title: '数据', icon: 'example' },
     children: [
       {
@@ -98,10 +98,25 @@ export default [
     ]
   },
   {
-    path: '/task',
+    path: '/plan',
     component: () => import('components/global/LMain'),
-    redirect: '/task/info',
-    name: '任务管理',
+    redirect: '/plan/info',
+    name: '计划',
+    meta: { title: '任务', icon: 'example' },
+    children: [
+      {
+        path: 'info',
+        name: '基本信息',
+        component: () => import('views/v-environment'),
+        meta: { title: '任务数据', icon: 'table' }
+      }
+    ]
+  },
+  {
+    path: '/execution',
+    component: () => import('components/global/LMain'),
+    redirect: '/execution/info',
+    name: '结果',
     meta: { title: '任务', icon: 'example' },
     children: [
       {

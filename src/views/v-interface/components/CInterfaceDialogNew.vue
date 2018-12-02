@@ -32,7 +32,7 @@
         <el-input
           v-model="form.path"
           placeholder="/path"
-          class="nput-with-select">
+          class="input-with-select">
           <el-select
             slot="prepend"
             v-model="form.method"

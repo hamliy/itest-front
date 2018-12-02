@@ -33,17 +33,47 @@
       </template>
     </el-table-column>
     <el-table-column
-      label="url"
+      label="协议"
       align="center"
-      width="180">
+      width="100">
+      <template slot-scope="scope">
+        <template v-if="scope.row.edit">
+          <el-select
+            v-model="scope.row.protocol"
+            placeholder="请选择">
+            <el-option label="http" value="http"/>
+            <el-option label="https" value="https"/>
+          </el-select>
+        </template>
+        <span v-else>{{ scope.row.protocol }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column
+      label="ip"
+      align="center"
+      width="250">
       <template slot-scope="scope">
         <template v-if="scope.row.edit">
           <el-input
-            v-model="scope.row.value"
+            v-model="scope.row.ip"
             class="edit-input"
             size="small"/>
         </template>
-        <span v-else>{{ scope.row.value }}</span>
+        <span v-else>{{ scope.row.ip }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column
+      label="端口号"
+      align="center"
+      width="100">
+      <template slot-scope="scope">
+        <template v-if="scope.row.edit">
+          <el-input
+            v-model="scope.row.port"
+            class="edit-input"
+            size="small"/>
+        </template>
+        <span v-else>{{ scope.row.port }}</span>
       </template>
     </el-table-column>
     <el-table-column
@@ -53,12 +83,12 @@
       <template slot-scope="scope">
         <template v-if="scope.row.edit">
           <el-input
-            v-model="scope.row.description"
+            v-model="scope.row.desc"
             class="edit-input"
             type="textarea"
             size="small"/>
         </template>
-        <span v-else>{{ scope.row.description }}</span>
+        <span v-else>{{ scope.row.desc }}</span>
       </template>
     </el-table-column>
     <el-table-column
@@ -80,11 +110,17 @@
           type="warning"
           @click="cancelEdit(scope.row)">取消</el-button>
         <el-button
-          v-else
+          v-if="!scope.row.edit"
           type="primary"
           size="small"
           icon="el-icon-edit"
           @click="scope.row.edit=!scope.row.edit">编辑</el-button>
+        <el-button
+          v-if="!scope.row.edit"
+          type="danger"
+          size="small"
+          icon="el-icon-delete"
+          @click="handleDelete(scope.row)">删除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -112,36 +148,38 @@
       dataSet: {
         type: Array,
         required: true
-      },
-      editStatus: {
-        type: Boolean,
-        default: false
       }
     },
     methods: {
       originalRow(row) {
         row.name = row.original.name;
-        row.value = row.original.value;
-        row.description = row.original.description;
+        row.protocol = row.original.protocol;
+        row.ip = row.original.ip;
+        row.port = row.original.port;
+        row.desc = row.original.desc;
       },
       rowOriginal(row) {
         row.original.name = row.name;
-        row.original.value = row.value;
-        row.original.description = row.description;
+        row.original.protocol = row.protocol;
+        row.original.ip = row.ip;
+        row.original.port = row.port;
+        row.original.desc = row.desc;
       },
       getDate(row) {
         return {
           name: row.name,
-          value: row.value,
-          description: row.description,
-          id: row._id.$oid
+          protocol: row.protocol,
+          ip: row.ip,
+          port: row.port,
+          desc: row.desc,
+          id: row.id
         };
       },
       cancelEdit(row) {
         this.originalRow(row);
         row.edit = false;
         this.$message({
-          message: 'The title has been restored to the original value',
+          message: '操作已取消',
           type: 'warning'
         });
       },
@@ -160,6 +198,9 @@
           row.edit = true;
           this.$_mUtil_messageError(err);
         });
+      },
+      handleDelete(row) {
+        this.$emit('delete', row);
       }
     }
   };

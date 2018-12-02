@@ -56,7 +56,7 @@
       align="center"
       width="200">
       <template slot-scope="scope">
-        {{ scope.row.createTime.$date
+        {{ scope.row.createTime
         | parseTime('{y}-{m}-{d} {h}:{i}') }}
       </template>
     </el-table-column>
@@ -102,7 +102,7 @@
       formatTime,
       updateTime(info) {
         if (info) {
-          return info.$date;
+          return info;
         }
         return '';
       }

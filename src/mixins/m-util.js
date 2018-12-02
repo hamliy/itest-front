@@ -24,7 +24,13 @@ export default {
     },
     $_mUtil_messageError(error) {
       if (error instanceof Error) {
-        if (
+        if (error.code === 'ECONNABORTED') {
+          this.$message({
+            showClose: true,
+            message: '请求超时，请重试！',
+            type: 'error'
+          });
+        } else if (
           'response' in error &&
           'status' in error.response &&
           error.response.status === 401
@@ -45,12 +51,6 @@ export default {
         this.$message({
           showClose: true,
           message: error.error,
-          type: 'error'
-        });
-      } else if (error.code === 'ECONNABORTED') {
-        this.$message({
-          showClose: true,
-          message: '请求超时，请重试！',
           type: 'error'
         });
       } else {

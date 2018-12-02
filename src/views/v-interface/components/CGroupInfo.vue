@@ -1,6 +1,6 @@
 <!--
   -- --------------------------------------------------------
-  -- @file CThemeInfo.vue
+  -- @file CGroupInfo.vue
   -- @description :
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:52:59
@@ -47,7 +47,7 @@
 <script>
 
 export default {
-  name: 'CInterfaceTreeCard',
+  name: 'CGroupInfo',
   props: {
     info: {
       type: Object,

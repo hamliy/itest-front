@@ -17,7 +17,7 @@
         <el-button
           type="primary"
           round
-          @click="$emit('createTheme')">添加分类</el-button>
+          @click="$emit('createGroup')">新增分组</el-button>
       </div>
     </c-view-header>
     <el-input
@@ -30,7 +30,7 @@
         :props="interfaceProps"
         :filter-node-method="filterNode"
         :expand-on-click-node="false"
-        node-key="_id"
+        node-key="id"
         highlight-current
         default-expand-all
         class="interface-tree"
@@ -124,9 +124,6 @@
       },
       onCreateInterface(node) {
         this.$emit('createInterface', node);
-      },
-      onCreateThemeSub(node) {
-        this.$emit('createThemeSub', node);
       },
       onEdit(node, data) {
         this.$emit('edit', node, data);
