@@ -4,8 +4,8 @@
  ** @file base.js
  ** @author wenkanglin <wenkang_lin@kingdee.com>
  ** @date 2018-03-07 17:26:40
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
- ** @last_modified_date 2018-03-19 16:17:09
+ ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_date 2018-12-03 14:47:26
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -15,8 +15,8 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const { dev } = require('../config/env');
 
 module.exports = () => ({
-  devtool: 'cheap-module-eval-source-map',
-
+  // devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   stats: 'none',
 
   performance: false,

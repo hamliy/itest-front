@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 14:55:03
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-26 09:57:47
+  -- @last_modified_date 2018-12-03 13:59:30
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -25,6 +25,17 @@
       :rules="formRules"
       label-position="left"
       label-width="100px">
+      <el-form-item label="接口分组">
+        <el-select
+          v-model="form.groupId"
+          placeholder="请选择">
+          <el-option
+            v-for="group in groups"
+            :key="group.id"
+            :label="group.name"
+            :value="group.id"/>
+        </el-select>
+      </el-form-item>
       <el-form-item label="接口名称" prop="name">
         <el-input v-model="form.name"/>
       </el-form-item>
@@ -68,6 +79,10 @@
       formData: {
         type: Object,
         default: null
+      },
+      groups: {
+        type: Array,
+        default: null
       }
     },
     data() {
@@ -83,12 +98,12 @@
         },
         methods: [
           { label: 'GET', value: 'GET' },
-          { label: 'POST', value: 'POST' },
-          { label: 'PUT', value: 'PUT' },
-          { label: 'DELETE', value: 'DELETE' },
-          { label: 'HEAD', value: 'HEAD' },
-          { label: 'OPTION', value: 'OPTION' },
-          { label: 'PATCH', value: 'PATCH' }
+          { label: 'POST', value: 'POST' }
+          // { label: 'PUT', value: 'PUT' },
+          // { label: 'DELETE', value: 'DELETE' },
+          // { label: 'HEAD', value: 'HEAD' },
+          // { label: 'OPTION', value: 'OPTION' },
+          // { label: 'PATCH', value: 'PATCH' }
         ]
       };
     },

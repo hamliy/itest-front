@@ -4,7 +4,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-09-18 17:39:29
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-30 10:07:04
+ ** @last_modified_date 2018-12-03 10:18:11
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -56,6 +56,7 @@ const mutations = {
     } else {
       const obj = projects[0];
       _state.selectedProject = obj;
+      setSelectedProjectId(obj.id);
     }
   }
 };

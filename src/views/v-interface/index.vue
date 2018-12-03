@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-11-26 17:12:36
+  -- @last_modified_date 2018-12-03 17:29:41
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -14,29 +14,31 @@
   <div class="content-page">
     <c-interface-tree-card
       ref="treeCard"
-      :tree-data="treeDatas"
+      :group-data="groupData"
       @nodeClick="handleNodeClick"
       @createInterface="handleCreateInterface"
       @createGroup="handleCreateGroup"
       @remove="handleRemove"
-      @edit="handleEdit"/>
-    <!-- <c-info-panel>
+      @edit="handleGroupEdit"/>
+    <c-info-panel>
       <c-interface-info
         v-if="isSelectInterface"
         :info="interfaceInfo"
         @updateInfo="updateInterfaceInfo"/>
-      <c-theme-info
+      <c-group-info
         v-else
-        :info="themeInfo"/>
-    </c-info-panel> -->
+        :info="groupInfo"/>
+    </c-info-panel>
     <c-interface-dialog-new
       :visible.sync="dialogInterfaceVisible"
       :title="'新增接口'"
       :form-data="formInterfaceData"
+      :groups="groupData"
       @confirm="addInterface"/>
     <c-group-dialog-new
       :visible.sync="dialogGroupVisible"
       :form-data="formGroupData"
+      :title="textMap[dialogGroupStatus]"
       @confirm="addGroup"/>
   </div>
 </template>
@@ -69,6 +71,7 @@ export default {
   data() {
     return {
       filterText: '',
+      groupData: [],
       dialogInterfaceVisible: false,
       dialogGroupVisible: false,
       id: 1000,
@@ -81,28 +84,47 @@ export default {
         name: '',
         desc: '',
         path: '',
-        mothed: 'GET'
-      },
-      type: 'new',
-      GroupType: 'new',
-      treeDatas: [],
-      groupInfo: {
-        name: '',
-        desc: ''
+        method: 'GET',
+        groupId: '',
+        option: {}
       },
       interfaceInfo: {
         name: '',
         desc: '',
         path: '',
         method: 'GET',
-        content_type: '',
-        req_body_type: 'json',
-        req_body_params: [],
-        req_example: '',
-        res_body_type: 'json',
-        res_body_params: [],
-        res_example: '',
-        headers: []
+        option: {
+          headers: [],
+          params: {
+            body: [],
+            path: [],
+            query: [],
+            type: 0
+          },
+          example: {
+            body: {},
+            path: {},
+            query: {}
+          },
+          response: [{
+            example: {},
+            params: [],
+            status: 200,
+            statusText: ''
+          }],
+          responseIndex: 0
+        }
+      },
+      groupInfo: {
+        name: '',
+        desc: ''
+      },
+      dialogInterfaceStatus: 'new',
+      dialogGroupStatus: 'new',
+      textMap: {
+        view: '查看分组',
+        edit: '编辑分组',
+        new: '新增分组'
       }
     };
   },
@@ -121,33 +143,42 @@ export default {
         desc: '',
         path: '',
         method: 'GET',
-        content_type: '',
-        req_body_type: 'json',
-        req_body_params: [],
-        req_example: '',
-        res_body_type: 'json',
-        res_body_params: [],
-        res_example: '',
-        headers: [],
-        theme_id: '',
-        sub_theme_name: ''
+        option: {
+          headers: [],
+          params: {
+            body: [],
+            path: [],
+            query: [],
+            type: 0
+          },
+          example: {
+            body: {},
+            path: {},
+            query: {}
+          },
+          response: [{
+            example: {},
+            params: [],
+            status: 200,
+            statusText: ''
+          }],
+          responseIndex: 0
+        }
       };
     },
     // 判断树节点类型
     judgeNode(node) {
-      console.log(node);
       if (node.level === 1) {
-        return 'theme';
-      } else if (node.data.list) {
-        return 'subTheme';
+        return 'group';
       }
       return 'interface';
     },
     // 获取分组接口信息
     getGroupInterface() {
-      this[cInterface.GET_GROUP_INTERFACE]({})
+      this[cInterface.GET_GROUP_INTERFACE]({
+      })
       .then(res => {
-        this.treeDatas = res.data.data;
+        this.groupData = res.data;
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
@@ -155,72 +186,81 @@ export default {
     },
     // 获取接口信息
     getInterface(node, data) {
-      this.initInterfaceInfo();
+      // this.initInterfaceInfo();
       this[cInterface.GET_INTERFACE]({
-        interface_id: data.interface_id
+        interfaceId: data.id
       })
       .then(res => {
-        console.log(node);
         this.interfaceInfo = Object.assign({}, res.data);
-        this.interfaceInfo.theme_id = node.level === 2 ?
-          node.parent.data._id : node.parent.parent.data._id;
-        this.interfaceInfo.sub_theme_name = node.level === 2 ?
-          '' : node.parent.data.name;
+        console.log(this.interfaceInfo);
+      })
+      .catch(err => {
+        this.initInterfaceInfo();
+        this.$_mUtil_messageError(err);
+      });
+    },
+    // 获取接口组包含接口信息
+    getGroup(node, data) {
+      this[cInterface.GET_INTERFACE_BY_GROUP]({
+        groupId: data.id
+      })
+      .then(res => {
+        this.groupInfo = Object.assign({}, res.data);
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
       });
     },
 
-    // addInterface(formData) {
-    //   this[cInterface.CREATE_THEME_INTERFACE](formData)
-    //   .then(() => {
-    //     this.dialogInterfaceVisible = false;
-    //     this.$message({
-    //       showClose: true,
-    //       message: '新增接口成功。',
-    //       type: 'success'
-    //     });
-    //     this.getTheme();
-    //   })
-    //   .catch(err => {
-    //     this.$_mUtil_messageError(err);
-    //   });
-    // },
-    addGroup(formData) {
-      this[cInterfaceGroup.CREATE_INTERFACE_GROUP](formData)
+    addInterface(formData) {
+      this[cInterface.CREATE_INTERFACE](formData)
       .then(() => {
-        this.dialogThemeVisible = false;
+        this.dialogInterfaceVisible = false;
         this.$message({
           showClose: true,
-          message: '新增接口分组成功。',
+          message: '新增接口成功。',
           type: 'success'
         });
-        this.getTheme();
+        this.getGroupInterface();
       })
       .catch(err => {
         this.$_mUtil_messageError(err);
       });
     },
-    // removeTheme(node) {
-      // const params = {
-      //   theme_id: node.data._id
-      // };
-      // this[cInterface.REMOVE_THEME](params)
-      // .then(() => {
-      //   this.$message({
-      //     showClose: true,
-      //     message: '删除成功。',
-      //     type: 'success'
-      //   });
-      //   this.getTheme();
-      //   this.$refs.treeCard.$refs
-      //   .interfaceTree.setCurrentNode(node.parent.data);
-      // })
-      // .catch(err => {
-      //   this.$_mUtil_messageError(err);
-      // });
-    // },
+    addGroup(formData) {
+      this[cInterfaceGroup.CREATE_INTERFACE_GROUP](formData)
+      .then(() => {
+        this.dialogGroupVisible = false;
+        this.$message({
+          showClose: true,
+          message: '新增接口分组成功。',
+          type: 'success'
+        });
+        this.getGroupInterface();
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
+    removeGroup(node) {
+      const params = {
+        id: node.data.id
+      };
+      this[cInterfaceGroup.DELETE_INTERFACE_GROUP](params)
+      .then(() => {
+        this.$message({
+          showClose: true,
+          message: '删除成功。',
+          type: 'success'
+        });
+        this.getGroupInterface();
+        this.$refs.treeCard.$refs
+        .interfaceTree.setCurrentNode(node.parent.data);
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
     // removeThemeSub(node) {
       // const params = {
       //   theme_id: node.parent.data._id,
@@ -241,28 +281,24 @@ export default {
       //   this.$_mUtil_messageError(err);
       // });
     // },
-    // removeThemeInterface(node) {
-    //   const params = {
-    //     theme_id: node.level === 2 ?
-    //       node.parent.data._id : node.parent.parent.data._id,
-    //     sub_theme_name: node.level === 2 ? '' : node.parent.data.name,
-    //     interface_id: node.data.interface_id
-    //   };
-      // this[cInterface.REMOVE_THEME_INTERFACE](params)
-      // .then(() => {
-      //   this.$message({
-      //     showClose: true,
-      //     message: '删除成功。',
-      //     type: 'success'
-      //   });
-      //   this.getTheme();
-      //   this.$refs.treeCard.$refs
-      //   .interfaceTree.setCurrentNode(node.parent.data);
-      // })
-      // .catch(err => {
-      //   this.$_mUtil_messageError(err);
-      // });
-    // },
+    removeInterface(node) {
+      this[cInterface.DELETE_INTERFACE]({
+        id: node.data.id
+      })
+      .then(() => {
+        this.$message({
+          showClose: true,
+          message: '删除成功。',
+          type: 'success'
+        });
+        this.getGroupInterface();
+        this.$refs.treeCard.$refs
+        .interfaceTree.setCurrentNode(node.parent.data);
+      })
+      .catch(err => {
+        this.$_mUtil_messageError(err);
+      });
+    },
     removeNode(node, data) {
       const parent = node.parent || {};
       const list = parent.data.list || parent.data;
@@ -309,6 +345,7 @@ export default {
     },
     handleCreateGroup() {
       this.dialogGroupVisible = true;
+      this.dialogGroupStatus = 'new';
       this.formGroupData = {
         name: '',
         desc: ''
@@ -317,13 +354,14 @@ export default {
 
     handleCreateInterface(node) {
       this.dialogInterfaceVisible = true;
+      this.dialogInterfaceStatus = 'new';
       this.formInterfaceData = {
         name: '',
         desc: '',
         path: '',
         method: 'GET',
-        theme_id: node.level === 1 ? node.data._id : node.parent.data._id,
-        sub_theme_name: node.level === 1 ? '' : node.data.name
+        groupId: node.data.id,
+        option: {}
       };
     },
     // 点击节点
@@ -334,30 +372,22 @@ export default {
         this.getInterface(node, data);
       } else {
         this.isSelectInterface = false;
-        this.themeInfo = {
-          name: data.name,
-          desc: data.desc
-        };
+        this.getGroup(node, data);
       }
     },
     // 点击节点编辑
-    handleEdit(node, data) {
-      this.dialogInterfaceVisible = true;
-      this.type = 'edit';
-      this.formData = {
-        name: data.label,
-        type: 'interface'
+    handleGroupEdit(node, data) {
+      this.dialogGroupVisible = true;
+      this.dialogGroupStatus = 'edit';
+      this.formGroupData = {
+        id: data.id,
+        name: data.name,
+        desc: data.desc
       };
-      data.label = 'test';
-      // const newChild = { id: this.id + 1, label: 'testtest', children: [] };
-      // if (!data.children) {
-      //   this.$set(data, 'children', []);
-      // }
-      // data.children.push(newChild);
     },
     // 点击移除节点
     handleRemove(node, data) {
-      const message = '确定要删除吗，是否继续？';
+      const message = `确定要删除${data.name}吗，是否继续?`;
       const title = '删除操作';
       this.$confirm(message, title, {
         confirmButtonText: '确定',
@@ -365,12 +395,10 @@ export default {
         type: 'danger'
       }).then(() => {
         const nodeType = this.judgeNode(node);
-        if (nodeType === 'theme') {
-          this.removeTheme(node, data);
-        } else if (nodeType === 'subTheme') {
-          this.removeThemeSub(node, data);
+        if (nodeType === 'group') {
+          this.removeGroup(node, data);
         } else {
-          this.removeThemeInterface(node, data);
+          this.removeInterface(node, data);
         }
       }).catch(() => '');
     }

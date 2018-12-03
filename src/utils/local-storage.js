@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@kingdee.com>
  ** @date 2018-11-27 13:49:36
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-30 15:44:14
+ ** @last_modified_date 2018-12-03 10:11:17
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -57,6 +57,8 @@ export const isRefreshTokenExpired = () => {
 };
 
 export const getSelectedProjectId = () => localStorage.getItem(ProjectKey);
+export const removeSelectedProjectId = () =>
+  localStorage.removeItem(ProjectKey);
 
 export const setSelectedProjectId = selectedProjectId =>
   localStorage.setItem(ProjectKey, selectedProjectId);

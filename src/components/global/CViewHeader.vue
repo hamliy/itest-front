@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-09-17 10:39:38
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-09 20:31:29
+  -- @last_modified_date 2018-12-03 15:59:22
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -14,7 +14,7 @@
   <div class="view-header">
     <div class="view-header-inner">
       <div class="view-header-main">
-        <h2>{{ title }}</h2>
+        <h3>{{ title }}</h3>
       </div>
       <div class="view-header-action">
         <slot></slot>

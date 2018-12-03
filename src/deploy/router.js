@@ -5,7 +5,7 @@
  ** @author wenkanglin <wenkang_lin@kingdee.com>
  ** @date 2018-03-07 17:26:40
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-29 17:41:08
+ ** @last_modified_date 2018-12-03 13:55:24
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
     next();
     return;
   }
-    // 如果auth失败且不是在刷新token，说明 auth失效
+  // 如果auth失败且不是在刷新token，说明 auth失效
   if (!authCheck('') && !window.isRefreshing) {
     /* 清除本地保存的auth */
     removeAuth();

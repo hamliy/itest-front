@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:53:16
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-30 14:40:10
+  -- @last_modified_date 2018-12-03 17:36:01
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -41,7 +41,7 @@
         <div class="interface-info-request">
           <div class="interface-info-request-title">Headers:</div>
           <el-table
-            :data="info.headers"
+            :data="info.option.headers"
             border
             style="width:100%;">
             <el-table-column
@@ -53,26 +53,15 @@
               label="参数值"
               width="240"/>
             <el-table-column
-              prop="required"
-              label="是否必须"
-              width="100">
-              <template slot-scope="scope">
-                <span>{{ scope.row.required ? '是':'否' }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column
-              prop="example"
-              label="示例"/>
-            <el-table-column
               prop="desc"
               label="备注"/>
           </el-table>
         </div>
         <div class="interface-info-request">
           <div class="interface-info-request-title">
-            RequestBody-{{ info.req_body_type }}:</div>
+            RequestBody:</div>
           <el-table
-            :data="info.req_body_params"
+            :data="getParamsInfo"
             border
             style="width:100%;">
             <el-table-column
@@ -80,7 +69,7 @@
               label="参数名称"
               width="240"/>
             <el-table-column
-              prop="param_type"
+              prop="paramType"
               label="参数类型"
               width="180"/>
             <el-table-column
@@ -109,9 +98,10 @@
         :title="'响应信息'">
         <div class="interface-info-request">
           <div class="interface-info-request-title">
-            RequestBody-{{ info.res_body_type }}:</div>
+            ResponseBody:</div>
           <el-table
-            :data="info.res_body_params"
+            :data="info.option.response[info.option.responseIndex]
+            ? info.option.response[info.option.responseIndex].params:[]"
             border
             style="width:100%;">
             <el-table-column
@@ -119,7 +109,7 @@
               label="参数名称"
               width="240"/>
             <el-table-column
-              prop="param_type"
+              prop="paramType"
               label="参数类型"
               width="180"/>
             <el-table-column
@@ -140,7 +130,8 @@
           <div class="interface-info-request-title">
             example:</div>
           <p>
-            {{ info.res_example }}
+            {{ info.option.response[info.option.responseIndex]
+            ? info.option.response[info.option.responseIndex].example : '' }}
           </p>
         </div>
       </c-view-panel-info-card>
@@ -162,6 +153,16 @@
           msg: 'test'
         }
       };
+    },
+    computed: {
+      getParamsInfo() {
+        if (this.info.option.params.type === 1) {
+          return this.info.option.params.path;
+        } else if (this.info.option.params.type === 2) {
+          return this.info.option.params.query;
+        }
+        return this.info.option.params.body;
+      }
     }
   };
 </script>

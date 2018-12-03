@@ -19,6 +19,7 @@ export default {
       behavior.SEARCH_INTERFACE,
       behavior.CREATE_INTERFACE,
       behavior.GET_GROUP_INTERFACE,
+      behavior.GET_INTERFACE_BY_GROUP,
       behavior.UPDATE_INTERFACE,
       behavior.DELETE_INTERFACE,
       behavior.GET_INTERFACE_HISTORY

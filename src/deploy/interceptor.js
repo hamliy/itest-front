@@ -5,7 +5,7 @@
  ** @author wenkanglin <wenkang_lin@kingdee.com>
  ** @date 2018-03-07 17:26:40
  ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-29 17:46:02
+ ** @last_modified_date 2018-12-03 13:49:29
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -69,8 +69,8 @@ axios.interceptors.request.use(
             /* 将请求挂起 */
             resolve(config);
           });
-          return retry;
         });
+        return retry;
       }
       config.headers.Authorization = `Bearer ${getToken()}`;
     }

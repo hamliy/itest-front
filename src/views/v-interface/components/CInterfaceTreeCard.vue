@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@kingdee.com>
   -- @date 2018-10-09 17:21:45
   -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-29 22:35:59
+  -- @last_modified_date 2018-12-03 16:01:03
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -16,8 +16,10 @@
       <div style="float:right;">
         <el-button
           type="primary"
-          round
-          @click="$emit('createGroup')">新增分组</el-button>
+          icon="el-icon-plus"
+          size="small"
+          circle
+          @click="$emit('createGroup')"/>
       </div>
     </c-view-header>
     <el-input
@@ -26,7 +28,7 @@
     <el-scrollbar class="live-scrollbar">
       <el-tree
         ref="interfaceTree"
-        :data="treeData"
+        :data="groupData"
         :props="interfaceProps"
         :filter-node-method="filterNode"
         :expand-on-click-node="false"
@@ -42,7 +44,7 @@
               color="#ffd880"
               icon-class="theme"/>
             <svg-icon
-              v-else-if="node.data.list"
+              v-else-if="node.data.member"
               color="#2395f1"
               icon-class="theme"/>
             <svg-icon
@@ -52,32 +54,26 @@
             {{ node.label }}</span>
           <span class="icons-list">
             <a
-              v-if="node.level == 1 ? true : false"
-              @click="() => onCreateThemeSub(node)">
-              <svg-icon
-                color="#2395f1"
-                title="新增子分类"
-                icon-class="theme_add"/>
-            </a>
-            <a
-              v-if="node.data.list? true : false"
+              v-if="node.data.member? true : false"
               @click="() => onCreateInterface(node)">
               <svg-icon
                 color="#11CD6E"
                 title="新增接口"
                 icon-class="add"/>
             </a>
+            <a
+              v-if="node.data.member? true : false"
+              @click="() => onEdit(node, data)">
+              <svg-icon
+                color="#409EFF"
+                title="编辑"
+                icon-class="edit"/>
+            </a>
             <a @click="() => onRemove(node, data)">
               <svg-icon
                 color="#EB4F38"
                 title="删除"
                 icon-class="delete"/>
-            </a>
-            <a @click="() => onEdit(node, data)">
-              <svg-icon
-                color="#409EFF"
-                title="编辑"
-                icon-class="edit"/>
             </a>
           </span>
         </span>
@@ -91,7 +87,7 @@
   export default {
     name: 'CInterfaceTreeCard',
     props: {
-      treeData: {
+      groupData: {
         type: Array,
         default: null
       }
@@ -105,14 +101,14 @@
           ]
         },
         interfaceProps: {
-          children: 'list',
+          children: 'member',
           label: 'name'
         }
       };
     },
     watch: {
       filterText(val) {
-        this.$refs.tree2.filter(val);
+        this.$refs.interfaceTree.filter(val);
       }
     },
     methods: {
