@@ -2,9 +2,9 @@
  ** ********************************************************
  ** @file image.js
  ** @description :
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-11-26 15:30:52
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-11-26 15:33:33
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

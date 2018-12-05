@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CInterfaceInfoPreview.vue
   -- @description : 接口基本信息预览页面
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-09 17:53:16
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-12-03 17:36:01
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

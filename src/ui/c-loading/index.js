@@ -1,9 +1,9 @@
 /**
  ** ********************************************************
  ** @file c-loading/index.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-22 10:00:53
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-22 10:02:31
  ** @example base usage
  ** const loader = this.$loader('加载中...');

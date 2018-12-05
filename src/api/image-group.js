@@ -2,9 +2,9 @@
  ** ********************************************************
  ** @file image-group.js
  ** @description :
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-10-09 16:18:13
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-11-26 15:34:25
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

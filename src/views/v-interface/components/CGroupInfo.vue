@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CGroupInfo.vue
   -- @description :
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-09 17:52:59
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-11 20:19:18
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

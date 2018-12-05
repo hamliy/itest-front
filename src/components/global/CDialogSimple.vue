@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CDialogSimple.vue
   -- @description : 提示窗口模板
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-27 09:53:55
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-09-27 11:16:59
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

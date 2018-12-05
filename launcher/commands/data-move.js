@@ -2,9 +2,9 @@
  ** ********************************************************
  ** Copy the src/data folder to dist dir
  ** @file data-move.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-07 17:26:40
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-16 17:12:56
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

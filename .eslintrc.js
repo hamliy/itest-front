@@ -1,10 +1,10 @@
 /**
  ** ********************************************************
  ** @file .eslintrc.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2017-12-13 13:59:40
- ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-10-09 14:17:17
+ ** @last_modified_by  hanli
+ ** @last_modified_date 2018-12-05 09:49:16
  ** @requires https://www.npmjs.com/package/eslint
  ** @requires https://www.npmjs.com/package/babel-eslint
  ** @requires https://www.npmjs.com/package/eslint-import-resolver-webpack
@@ -82,7 +82,7 @@ module.exports = {
 
     // best practices
     'accessor-pairs': ['error', { setWithoutGet: true }],
-    complexity: ['error', 10],
+    complexity: ['error', 12],
     'consistent-return': ['error', { treatUndefinedAsUnspecified: true }],
     curly: ['error', 'all'],
     eqeqeq: ['error', 'always', { null: 'always' }],
@@ -224,7 +224,7 @@ module.exports = {
       }
     ],
     'max-nested-callbacks': ['error', 3],
-    'max-params': ['error', 3],
+    'max-params': ['error', 4],
     'max-statements': ['error', 80],
     'max-statements-per-line': ['error', { max: 1 }],
     'no-bitwise': ['error', { allow: ['~'], int32Hint: true }],

@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CDialogImageCreate.vue
   -- @description :
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-30 21:38:49
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-11-01 17:47:47
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

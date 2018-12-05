@@ -2,9 +2,9 @@
  ** ********************************************************
  ** @file auth-check.js
  ** @description : 权限校验
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-11-27 16:47:30
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-11-29 16:29:20
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

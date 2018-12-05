@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CEnvDialogOperate.vue
   -- @description :
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-29 17:16:34
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-09-29 17:36:34
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

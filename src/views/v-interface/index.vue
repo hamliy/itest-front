@@ -2,10 +2,10 @@
   -- --------------------------------------------------------
   -- @file index.vue
   -- @description : 接口视图
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-30 17:39:48
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-12-03 17:29:41
+  -- @last_modified_by  hanli
+  -- @last_modified_date 2018-12-04 16:27:03
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -94,7 +94,10 @@ export default {
         path: '',
         method: 'GET',
         option: {
-          headers: [],
+          headers: {
+            params: [],
+            example: {}
+          },
           params: {
             body: [],
             path: [],
@@ -144,7 +147,10 @@ export default {
         path: '',
         method: 'GET',
         option: {
-          headers: [],
+          headers: {
+            params: [],
+            example: {}
+          },
           params: {
             body: [],
             path: [],

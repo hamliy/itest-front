@@ -1,9 +1,9 @@
 /**
  ** ********************************************************
  ** @file .stylelintrc.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-02-01 10:03:14
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-16 17:04:35
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

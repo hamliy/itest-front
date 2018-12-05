@@ -1,9 +1,9 @@
 /**
  ** ********************************************************
  ** @file user.js
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-09-20 11:29:46
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-09-20 11:30:34
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file LMain.vue
   -- @description : 上中布局
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-08 10:25:53
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-08 16:22:57
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

@@ -2,9 +2,9 @@
  ** ********************************************************
  ** A custom theme for pretty-error
  ** @file pe-theme.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-16 17:08:23
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-16 17:12:08
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

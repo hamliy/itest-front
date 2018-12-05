@@ -2,9 +2,9 @@
  ** ********************************************************
  ** The webpack config for analyse
  ** @file index.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2017-12-13 14:23:01
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-21 14:59:04
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

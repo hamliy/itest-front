@@ -2,9 +2,9 @@
  ** ********************************************************
  ** Auto set global directive in directives dir
  ** @file directive.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-07 17:26:40
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-10-26 16:55:41
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

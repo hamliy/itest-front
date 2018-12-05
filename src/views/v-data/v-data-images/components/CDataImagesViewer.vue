@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CDataImagesViewer.vue
   -- @description : 图片预览页面
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-30 17:40:45
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-31 16:20:14
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

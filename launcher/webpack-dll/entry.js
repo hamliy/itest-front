@@ -2,9 +2,9 @@
  ** ********************************************************
  ** The webpack dll entry
  ** @file entry.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-07 17:26:40
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-09-17 16:48:36
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

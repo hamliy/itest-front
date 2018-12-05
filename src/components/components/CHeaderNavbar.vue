@@ -1,9 +1,9 @@
 <!--
   -- --------------------------------------------------------
   -- @file CHeaderNavbar.vue
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-17 10:40:27
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-11-30 16:07:08
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

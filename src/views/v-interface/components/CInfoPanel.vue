@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CInfoPanel.vue
   -- @description :
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-10 16:04:23
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-26 10:16:11
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

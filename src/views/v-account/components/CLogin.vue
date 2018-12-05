@@ -1,9 +1,9 @@
 <!--
   -- --------------------------------------------------------
   -- @file CLogin.vue
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-19 11:18:44
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-11-26 17:29:09
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

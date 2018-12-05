@@ -2,9 +2,9 @@
  ** ********************************************************
  ** The webpack stats config
  ** @file stats.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2017-12-14 13:33:54
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-16 17:48:49
  ** @tutorial https://webpack.js.org/configuration/stats
  ** @copyright (c) 2018 @yfe/aldnoah-spa

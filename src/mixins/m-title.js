@@ -1,9 +1,9 @@
 /**
  ** ********************************************************
  ** @file m-title.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-22 09:31:14
- ** @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
+ ** @last_modified_by
  ** @last_modified_date 2018-03-22 09:36:47
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

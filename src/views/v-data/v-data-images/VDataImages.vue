@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file VDataImages.vue
   -- @description : 数据集-图片数据视图
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-30 15:36:00
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-11-29 16:44:43
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

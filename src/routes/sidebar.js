@@ -1,9 +1,9 @@
 /**
  ** ********************************************************
  ** @file sidebar.js
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-09-25 14:39:34
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-10-30 20:04:18
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

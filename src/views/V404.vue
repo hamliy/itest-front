@@ -1,10 +1,10 @@
 <!--
   -- --------------------------------------------------------
   -- @file V404.vue
-  -- @author wenkanglin <wenkang_lin@kingdee.com>
+  -- @author
   -- @date 2018-03-22 10:18:19
-  -- @last_modified_by wenkanglin <wenkang_lin@kingdee.com>
-  -- @last_modified_date 2018-03-22 10:18:46
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 10:35:19
   -- @copyright (c) 2018 @yfe/aldnoah-spa
   -- --------------------------------------------------------
  -->
@@ -20,7 +20,3 @@
     name: 'V404'
   };
 </script>
-
-<style scoped>
-
-</style>

@@ -2,9 +2,9 @@
  ** ********************************************************
  ** The config in different environments
  ** @file env.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2017-12-13 14:18:04
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-11-26 17:55:55
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

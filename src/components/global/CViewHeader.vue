@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CViewHeader.vue
   -- @description 视图标题
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-17 10:39:38
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-12-03 15:59:22
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

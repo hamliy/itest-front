@@ -2,10 +2,10 @@
   -- --------------------------------------------------------
   -- @file VVariable.vue
   -- @desc 环境变量
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-25 16:38:10
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
-  -- @last_modified_date 2018-10-09 16:29:01
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 10:36:20
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -52,15 +52,9 @@
 import * as environment from 'store/constants/environment';
 import mEnvironment from 'mixins/m-environment';
 import mUtil from 'mixins/m-util';
-import CEnvTable from './components/CEnvTable';
-import CEnvDialogOperate from './components/CEnvDialogOperate';
 
 export default {
   name: 'VVariable',
-  components: {
-    CEnvTable,
-    CEnvDialogOperate
-  },
   mixins: [mEnvironment, mUtil],
   data() {
     return {

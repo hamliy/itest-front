@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CInterfaceDialogNew.vue
   -- @description : 新增接口窗口
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-09 14:55:03
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-12-03 13:59:30
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

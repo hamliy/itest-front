@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CTableExpand.vue
   -- @description : 可新增删除编辑表格
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-29 14:58:48
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-30 14:30:35
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

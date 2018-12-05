@@ -1,16 +1,19 @@
 /**
  ** ********************************************************
  ** @file entry.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2018-03-22 09:51:43
- ** @last_modified_by hanli <lihan_li@kingdee.com>
- ** @last_modified_date 2018-11-30 10:02:17
+ ** @last_modified_by  hanli
+ ** @last_modified_date 2018-12-04 20:05:28
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+import 'prismjs/themes/prism.css';
+import 'simditor/styles/simditor.css';
 // import Viewer from 'viewerjs';
 import 'core-js/shim';
 import { isDev } from 'envUtil';

@@ -2,9 +2,9 @@
  ** ********************************************************
  ** The common webpack plugin config for all environments
  ** @file plugins.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2017-12-14 14:24:45
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-09-20 22:21:09
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

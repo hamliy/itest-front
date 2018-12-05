@@ -3,9 +3,9 @@
  ** The directory structure configuration, export directory name
  ** which named as vars&_vars and directory path which named as dirs&_dirs
  ** @file dir-vars.js
- ** @author wenkanglin <wenkang_lin@kingdee.com>
+ ** @author
  ** @date 2017-12-13 14:06:42
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-09-20 21:16:38
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************

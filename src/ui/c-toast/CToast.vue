@@ -1,9 +1,9 @@
 <!--
   -- --------------------------------------------------------
   -- @file CToast.vue
-  -- @author wenkanglin <wenkang_lin@kingdee.com>
+  -- @author
   -- @date 2018-03-22 10:03:39
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-09-27 16:36:54
   -- @copyright (c) 2018 @yfe/aldnoah-spa
   -- --------------------------------------------------------

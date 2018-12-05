@@ -1,9 +1,9 @@
 /**
  ** ********************************************************
  ** @file store-helper.js
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-09-18 20:15:28
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-09-29 14:45:26
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

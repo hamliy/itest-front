@@ -1,9 +1,9 @@
 <!--
   -- --------------------------------------------------------
   -- @file CSidebarItems.vue
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-17 10:39:38
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-09-26 09:52:31
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

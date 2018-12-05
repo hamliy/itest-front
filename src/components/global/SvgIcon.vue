@@ -1,9 +1,9 @@
 <!--
   -- --------------------------------------------------------
   -- @file SvgIcon.vue
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-20 15:38:16
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-09 11:18:58
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

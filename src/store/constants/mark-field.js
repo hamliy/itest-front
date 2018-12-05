@@ -2,9 +2,9 @@
  ** ********************************************************
  ** @file mark-field.js
  ** @description :
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-11-26 16:26:16
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-11-26 16:31:43
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

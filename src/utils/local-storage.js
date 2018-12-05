@@ -2,9 +2,9 @@
  ** ********************************************************
  ** @file local-storage.js
  ** @description : 本地缓存数据
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-11-27 13:49:36
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-12-03 10:11:17
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

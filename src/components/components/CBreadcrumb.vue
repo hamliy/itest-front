@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CBreadcrumb.vue
   -- @description :
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-28 15:30:03
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-08 16:03:00
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

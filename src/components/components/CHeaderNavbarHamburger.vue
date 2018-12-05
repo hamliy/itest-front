@@ -1,9 +1,9 @@
 <!--
   -- --------------------------------------------------------
   -- @file CHeaderNavbarHamburger.vue
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-18 16:31:27
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-09-28 11:08:55
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

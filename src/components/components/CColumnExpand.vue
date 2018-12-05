@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CColumnExpand.vue
   -- @description : 动态列表格可扩展组件
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-29 15:27:46
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-29 17:52:02
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

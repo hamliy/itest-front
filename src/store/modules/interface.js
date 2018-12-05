@@ -2,9 +2,9 @@
  ** ********************************************************
  ** @file interface.js
  ** @description :
- ** @author hanli <lihan_li@kingdee.com>
+ ** @author  hanli
  ** @date 2018-10-09 16:21:20
- ** @last_modified_by hanli <lihan_li@kingdee.com>
+ ** @last_modified_by  hanli
  ** @last_modified_date 2018-12-03 14:21:06
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************

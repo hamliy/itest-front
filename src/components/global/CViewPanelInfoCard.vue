@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CViewPanelInfoCard.vue
   -- @description : 内部视图模板，通用格式
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-26 10:51:31
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-26 14:10:57
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

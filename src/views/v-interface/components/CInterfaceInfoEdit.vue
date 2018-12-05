@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CInterfaceInfoEdit.vue
   -- @description : 接口基本信息编辑页面
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-10-09 17:53:16
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-30 13:43:29
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------

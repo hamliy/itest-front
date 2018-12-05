@@ -2,9 +2,9 @@
   -- --------------------------------------------------------
   -- @file CDialogue.vue
   -- @description : 操作窗口模板
-  -- @author hanli <lihan_li@kingdee.com>
+  -- @author  hanli
   -- @date 2018-09-27 11:16:29
-  -- @last_modified_by hanli <lihan_li@kingdee.com>
+  -- @last_modified_by  hanli
   -- @last_modified_date 2018-10-09 15:23:44
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
