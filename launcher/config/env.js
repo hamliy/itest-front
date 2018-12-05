@@ -4,8 +4,8 @@
  ** @file env.js
  ** @author
  ** @date 2017-12-13 14:18:04
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-11-26 17:55:55
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-05 13:34:58
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -21,7 +21,7 @@ module.exports = {
     env: dev,
     quiet: false,
     proxy: {
-      '/api': { target: 'http://172.20.166.138:8083' }
+      '/api': { target: 'http://localhost:8083' }
     },
     dllPattern: '',
     dllManifest: 'dev-manifest.json'
