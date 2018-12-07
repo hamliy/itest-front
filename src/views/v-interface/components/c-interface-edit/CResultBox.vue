@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 19:58:09
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-04 20:28:54
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 16:27:27
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -38,7 +38,7 @@ export default {
       return this.getResponseData();
     },
     response() {
-      return this.$store.state.response;
+      return this.$store.getters.api.options.response;
     }
   },
   methods: {

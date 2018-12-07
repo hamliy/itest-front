@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 21:25:46
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-04 21:46:27
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-06 18:02:01
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -32,7 +32,7 @@
       </i>
       <i class="el-icon-plus" @click="addParam"></i>
     </div>
-    <c-param-item-set
+    <c-params-item-set
       :param="param"
       :name="name"
       @keydown.native.enter="addParam"
@@ -103,41 +103,43 @@ export default {
 };
 </script>
 <style lang="scss">
+  .params-box {
+    .control {
+      min-width: 56px;
+      max-width: 56px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .control i {
+      color: #ccc;
+      line-height: 36px;
+      width: 28px;
+      font-size: 12px;
+      cursor: pointer;
+      float: left;
+      text-align: center;
+    }
+
+    .control i.el-icon-plus {
+      font-size: 14px;
+    }
+
+    .control i:hover {
+      background-color: #eff2f7;
+    }
+
+    .control i.hidden {
+      visibility: hidden;
+    }
+  }
+
   .param-wrap {
     position: relative;
 
     .params-box {
       transition: height 0.3s ease;
-
-      .control {
-        min-width: 56px;
-        max-width: 56px;
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-
-      .control i {
-        color: #ccc;
-        line-height: 36px;
-        width: 28px;
-        font-size: 12px;
-        cursor: pointer;
-        float: left;
-        text-align: center;
-      }
-
-      .control i.el-icon-plus {
-        font-size: 14px;
-      }
-
-      .control i:hover {
-        background-color: #eff2f7;
-      }
-
-      .control i.hidden {
-        visibility: hidden;
-      }
     }
 
     &.fold .params-box {

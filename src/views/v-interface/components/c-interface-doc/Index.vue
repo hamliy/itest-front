@@ -1,11 +1,11 @@
 <!--
   -- --------------------------------------------------------
-  -- @file CInterfaceDoc.vue
+  -- @file Index.vue
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 10:41:31
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-04 16:28:11
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 20:43:05
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -29,9 +29,6 @@
         <div>
           <label>接口路径：</label>
           <p class="prod code">
-            <span class="path-method">
-              {{ api.method }}
-            </span>
             {{ api.path }}</p></div>
       </div>
       <div class="field">
@@ -48,11 +45,11 @@
         <c-interface-doc-schema :schema="headers" name="headers"/>
       </div>
       <div
-        v-if="api.option.response && api.option.response.length"
+        v-if="api.options.response && api.options.response.length"
         class="field">
         <label>返回结果</label>
         <c-interface-doc-schemas
-          :schemas="api.option.response"
+          :schemas="api.options.response"
           name="response"/>
       </div>
       <div v-show="api.desc" class="field desc">
@@ -81,7 +78,7 @@ export default {
   props: {
     api: {
       type: Object,
-      required: true
+      default: null
     }
   },
   computed: {
@@ -98,19 +95,19 @@ export default {
     },
     schemaParams() {
       const schemas = {};
-      Object.keys(this.api.option.params).forEach(key => {
+      Object.keys(this.api.options.params).forEach(key => {
         // get方法没有body参数
         if (this.method !== 'GET' || key !== 'body') {
           schemas[key] = {
-            example: this.api.option.example[key],
-            params: this.api.option.params[key]
+            example: this.api.options.examples[key],
+            params: this.api.options.params[key]
           };
         }
       });
       return schemas;
     },
     headers() {
-      return this.api.option.headers;
+      return this.api.options.headers;
     }
   },
   methods: {

@@ -4,8 +4,8 @@
  ** @file loaders.js
  ** @author
  ** @date 2017-12-14 13:48:04
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-12-04 20:06:08
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-05 14:43:26
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -23,7 +23,6 @@ const _vueTree = _path.join(
 );
 const _prismjs = _path.join(dirs.node, 'prismjs', 'themes', 'prism');
 const _viewerjs = _path.join(dirs.node, 'viewerjs', 'dist', 'viewer');
-const _simditor = _path.join(dirs.node, 'simditor', 'styles', 'simditor');
 
 /**
  * @param {Object} [options={}] - custom options
@@ -99,8 +98,7 @@ module.exports = (options = {}) => ({
           _element,
           _vueTree,
           _viewerjs,
-          _prismjs,
-          _simditor
+          _prismjs
         ]
       }
     ])

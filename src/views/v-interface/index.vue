@@ -4,8 +4,8 @@
   -- @description : 接口视图
   -- @author  hanli
   -- @date 2018-09-30 17:39:48
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-04 16:27:03
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 19:58:11
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -23,7 +23,6 @@
     <c-info-panel>
       <c-interface-info
         v-if="isSelectInterface"
-        :info="interfaceInfo"
         @updateInfo="updateInterfaceInfo"/>
       <c-group-info
         v-else
@@ -86,14 +85,14 @@ export default {
         path: '',
         method: 'GET',
         groupId: '',
-        option: {}
+        options: {}
       },
       interfaceInfo: {
         name: '',
         desc: '',
         path: '',
         method: 'GET',
-        option: {
+        options: {
           headers: {
             params: [],
             example: {}
@@ -101,8 +100,7 @@ export default {
           params: {
             body: [],
             path: [],
-            query: [],
-            type: 0
+            query: []
           },
           example: {
             body: {},
@@ -146,7 +144,7 @@ export default {
         desc: '',
         path: '',
         method: 'GET',
-        option: {
+        options: {
           headers: {
             params: [],
             example: {}
@@ -196,12 +194,7 @@ export default {
       this[cInterface.GET_INTERFACE]({
         interfaceId: data.id
       })
-      .then(res => {
-        this.interfaceInfo = Object.assign({}, res.data);
-        console.log(this.interfaceInfo);
-      })
       .catch(err => {
-        this.initInterfaceInfo();
         this.$_mUtil_messageError(err);
       });
     },
@@ -367,7 +360,7 @@ export default {
         path: '',
         method: 'GET',
         groupId: node.data.id,
-        option: {}
+        options: {}
       };
     },
     // 点击节点

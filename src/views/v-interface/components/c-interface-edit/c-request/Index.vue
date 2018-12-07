@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:16:20
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:11:33
+  -- @last_modified_date 2018-12-05 18:05:10
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -42,7 +42,7 @@
       </ul>
     </el-col>
     <el-col class="schema-content">
-      <schema
+      <c-schema
         :schema="activeSchema"
         :name="activeType"
         :fullscreen="fullscreen"
@@ -52,14 +52,18 @@
 </template>
 
 <script>
+import mInterface from 'mixins/m-interface';
+import * as iBehavior from 'store/constants/interface';
 import R from 'utils/ramda-r';
 import CSchema from '../c-schema/Index';
+
 
 export default {
   name: 'CRequest',
   components: {
     CSchema
   },
+  mixins: [mInterface],
   props: {
     fullscreen: {
       type: Boolean,
@@ -94,17 +98,17 @@ export default {
         this.headers : this.localParams[this.activeType];
     },
     headers() {
-      return this.$store.state.api.options.headers;
+      return this.$store.getters.api.options.headers;
     },
     params() {
-      return R.clone(this.$store.state.api.options.params);
+      return R.clone(this.$store.getters.api.options.params);
     },
     examples() {
-      return R.clone(this.$store.state.api.options.examples);
+      return R.clone(this.$store.getters.api.options.examples);
     },
     localParams() {
       const localParams = {};
-      Object.this.params(key => {
+      Object.keys(this.params).forEach(key => {
         localParams[key] = this.getSchemaObject(key);
       });
       return localParams;
@@ -131,13 +135,15 @@ export default {
     },
     updateParams(data) {
       if (this.activeType === 'headers') {
-        this.$store.commit('UPDATE_API_PROPS', ['options.headers', data]);
+        this.$store.commit(iBehavior.UPDATE_API_PROPS,
+          ['options.headers', data]);
         return;
       }
       const key = `options.params.${this.activeType}`;
-      this.$store.commit('UPDATE_API_PROPS', [key, data.params]);
+      this.$store.commit(iBehavior.UPDATE_API_PROPS, [key, data.params]);
       const exampleKey = `options.examples.${this.activeType}`;
-      this.$store.commit('UPDATE_API_PROPS', [exampleKey, data.example]);
+      this.$store.commit(iBehavior.UPDATE_API_PROPS,
+        [exampleKey, data.example]);
     },
     changeSchema(type) {
       this.activeType = type;

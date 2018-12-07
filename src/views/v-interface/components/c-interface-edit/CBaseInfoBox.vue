@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 19:59:08
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-05 10:27:31
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 19:18:07
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -14,7 +14,8 @@
     <el-row type="flex">
       <el-col :span="24">
         <el-input
-          v-model="name"/>
+          v-model="name"
+          label="接口名："/>
         <el-input
           v-model="path"
           placeholder="/path">
@@ -32,9 +33,8 @@
       </el-col>
       <el-col class="control">
         <el-button
-          v-if="mode === 'edit'"
-          id="saveAct"
-          type="info"
+          class="api-save"
+          type="primary"
           @click="save()"/>
       </el-col>
     </el-row>
@@ -42,28 +42,44 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import mInterface from 'mixins/m-interface';
+import * as iBehavior from 'store/constants/interface';
 
 export default {
   name: 'CBaseInfoBox',
+  mixins: [mInterface],
   data() {
     return {
       saveToken: false,
-      isShowDialog: false,
-      testMode: 'mock',
-      testModes: ['mock', 'prod', 'dev']
+      isShowDialog: false
     };
   },
   computed: {
     api() {
-      return this.$store.state.api;
+      return this.$store.getters.api;
     },
     method: {
       get() {
-        return this.$store.state.api.option.method;
+        return this.$store.getters.api.method;
       },
       set(value) {
-        this.$store.commit('UPDATE_API_PROPS', ['option.method', value]);
+        this.$store.commit(iBehavior.UPDATE_API_PROPS, ['method', value]);
+      }
+    },
+    name: {
+      get() {
+        return this.$store.getters.api.name;
+      },
+      set(value) {
+        this.$store.commit(iBehavior.UPDATE_API_PROPS, ['name', value]);
+      }
+    },
+    path: {
+      get() {
+        return this.$store.getters.api.path;
+      },
+      set(value) {
+        this.$store.commit(iBehavior.UPDATE_API_PROPS, ['path', value]);
       }
     }
   },
@@ -74,26 +90,13 @@ export default {
     document.addEventListener('keydown', this.onKeydown);
   },
   methods: {
-    ...mapActions([
-      'saveApi',
-      'testApi'
-    ]),
     save() {
       if (this.saveToken) {
         return;
       }
       this.saveToken = true;
-      this.saveApi().then(() => {
+      this[iBehavior.UPDATE_INTERFACE]().then(() => {
         this.saveToken = false;
-        if (this.$route.name === 'Create' && this.api._id) {
-          this.$router.push({
-            name: 'Edit',
-            params: {
-              groupId: this.api.group,
-              apiId: this.api._id
-            }
-          });
-        }
         this.$message.success('保存成功');
       }).catch(err => {
         this.saveToken = false;
@@ -111,11 +114,6 @@ export default {
 </script>
 <style lang="scss">
   .url-box {
-    .el-col.mode {
-      width: 150px;
-      text-align: right;
-    }
-
     .el-input__inner {
       &:hover,
       &:focus {
@@ -132,58 +130,47 @@ export default {
       text-align: right;
     }
 
-    .el-input-group__append {
-      padding: 0;
-      overflow: hidden;
+    // .el-input-group__append {
+    //   padding: 0;
+    //   overflow: hidden;
 
-      & .el-button {
-        display: inline-block;
-        vertical-align: middle;
-        border-right: 1px solid #bfcbd9;
-        margin: 0;
-        border-radius: 0;
-        width: 70px;
-        text-align: center;
-      }
+    //   & .el-button {
+    //     display: inline-block;
+    //     vertical-align: middle;
+    //     border-right: 1px solid #bfcbd9;
+    //     margin: 0;
+    //     border-radius: 0;
+    //     width: 70px;
+    //     text-align: center;
+    //   }
 
-      & .el-button:last-child {
-        border-right: 0;
-      }
+    //   & .el-button:last-child {
+    //     border-right: 0;
+    //   }
 
-      & .el-button.is-disabled {
-        border-color: #bfcbd9;
-        border-left: none;
-        background-color: #eef1f6;
-        color: #bfcbd9;
-      }
+    //   & .el-button.is-disabled {
+    //     border-color: #bfcbd9;
+    //     border-left: none;
+    //     background-color: #eef1f6;
+    //     color: #bfcbd9;
+    //   }
 
-      & .el-button:not(.is-disabled):hover {
-        color: #324057;
-      }
-    }
+    //   & .el-button:not(.is-disabled):hover {
+    //     color: #324057;
+    //   }
+    // }
   }
 
-  #editAct,
-  #saveAct {
+  .api-save {
     width: 91px;
   }
 
-  #saveAct ::after {
+  .api-save::after {
     content: '保存';
   }
 
-  #saveAct :hover ::after {
+  .api-save:hover::after {
     content: '⌘ + S';
-  }
-
-  .el-select-dropdown__item.is-disabled.doc {
-    cursor: pointer;
-    color: #48576a;
-  }
-
-  .el-select-dropdown__item.is-disabled.doc:hover {
-    /* background-color: #58B7FF; */
-    color: #58b7ff;
   }
 </style>
 

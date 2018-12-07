@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 11:20:21
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-04 14:20:43
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 20:22:41
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -23,7 +23,7 @@
         </div>
       </el-row>
     </div>
-    <div class="bd">
+    <div class="bd2">
       <c-interface-doc-params
         :params="params"
         :level="0"/>

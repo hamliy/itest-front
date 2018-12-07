@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 19:55:11
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:06:08
+  -- @last_modified_date 2018-12-05 16:47:49
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -17,7 +17,7 @@
         <c-request-box :fullscreen="props.fullscreen" :method="method"/>
       </template>
     </c-setting-field>
-    <c-setting-field v-if="mode === 'test'" title="Result">
+    <!-- <c-setting-field title="Result">
       <el-tabs
         slot="header"
         v-model="resActive"
@@ -29,7 +29,7 @@
       <template slot-scope="props">
         <c-result-box :fullscreen="props.fullscreen" :res-active="resActive"/>
       </template>
-    </c-setting-field>
+    </c-setting-field> -->
     <c-setting-field v-if="response" title="Response">
       <c-response-config slot="header"/>
       <template slot-scope="props">
@@ -68,14 +68,11 @@ export default {
     };
   },
   computed: {
-    mode() {
-      return this.$store.state.mode;
-    },
     method() {
-      return this.$store.state.api.options.method;
+      return this.$store.getters.api.method;
     },
     response() {
-      return this.$store.state.api.options.response;
+      return this.$store.getters.api.options.response;
     }
   }
 };

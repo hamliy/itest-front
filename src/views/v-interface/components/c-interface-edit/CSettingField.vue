@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 19:58:29
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-05 10:27:21
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 21:00:28
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -14,7 +14,8 @@
   <div
     :class="{ fullscreen: fullscreen, expland: expland }"
     class="setting-field">
-    <div class="hd">{{ title }}
+    <div class="hd">
+      {{ title }}
       <slot name="header"></slot>
       <el-button
         size="small"

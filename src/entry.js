@@ -3,8 +3,8 @@
  ** @file entry.js
  ** @author
  ** @date 2018-03-22 09:51:43
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-12-04 20:05:28
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-05 14:42:08
  ** @copyright (c) 2018 @yfe/aldnoah-spa
  ** ********************************************************
  */
@@ -13,7 +13,6 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import 'prismjs/themes/prism.css';
-import 'simditor/styles/simditor.css';
 // import Viewer from 'viewerjs';
 import 'core-js/shim';
 import { isDev } from 'envUtil';
@@ -42,7 +41,6 @@ Vue.config.errorHandler = function VueErrorHandler(err, vm, info) {
 
 Vue.mixin(mTitle);
 Vue.use(ElementUI);
-
 const EventBus = new Vue();
 
 const props = {

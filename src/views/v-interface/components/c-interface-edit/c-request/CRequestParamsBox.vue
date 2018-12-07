@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:17:55
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:11:25
+  -- @last_modified_date 2018-12-05 17:49:47
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -36,7 +36,7 @@ export default {
   },
   props: {
     params: {
-      type: Array,
+      type: Object,
       default: null
     },
     name: {

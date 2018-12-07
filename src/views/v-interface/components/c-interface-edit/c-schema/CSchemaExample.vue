@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:08:31
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:22:24
+  -- @last_modified_date 2018-12-05 18:17:52
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -100,7 +100,7 @@ export default {
         this.example = data.data;
       }
       // 此处为了业务简单，与vuex耦合
-      this.$store.commit('UPDATE_DSL_STATUS', data);
+      // this.$store.commit('UPDATE_DSL_STATUS', data);
     },
     buildExample() {
       this.example = buildExampleFromSchema({

@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:08:05
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:11:30
+  -- @last_modified_date 2018-12-05 16:16:10
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -55,6 +55,7 @@ import CParams from '../c-params/Index';
 import CSchemaExample from './CSchemaExample';
 
 export default {
+  name: 'CSchema',
   components: {
     CParams,
     CSchemaExample

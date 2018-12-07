@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@test.com>
  ** @date 2018-12-05 10:59:28
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-05 11:19:40
+ ** @last_modified_date 2018-12-05 18:13:59
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -23,21 +23,7 @@
  */
 
 import R from './ramda-r';
-
-class Param {
-  constructor(initParam = {}) {
-    const {
-      key = null,
-      type = 'string',
-      required = true,
-      comment = null
-    } = initParam;
-    this.key = key;
-    this.type = type;
-    this.required = required;
-    this.comment = comment;
-  }
-}
+import Param from '../model/Param';
 
 const findParam = (params, key) => {
   if (!params || !params.length) {
@@ -48,7 +34,7 @@ const findParam = (params, key) => {
 
 const buildParams = (json, oldParams) => {
   const params = [];
-  Object.json(key => {
+  Object.keys(json).forEach(key => {
     const jsonValue = json[key];
     const type = typeof jsonValue;
     // null, {}, [] 都属于空，属性则为选填
@@ -82,8 +68,8 @@ const buildParams = (json, oldParams) => {
     if (params.length === 0) {
       params.push(new Param());
     }
-    return params;
   });
+  return params;
 };
 
 const buildSchemaFromExample = (

@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 11:20:12
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-04 15:34:41
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 20:41:23
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -43,8 +43,7 @@
       :params="schema.params"/>
     <pre
       v-show="isShowExample"
-      class="code">
-      <code v-html="example"></code>
+      class="code"><code v-html="example"></code>
     </pre>
   </div>
 </template>
@@ -74,13 +73,11 @@ export default {
     };
   },
   computed: {
-    diffMode() {
-      return this.$store.state.diffMode;
-    },
     example() {
       const example = this.schema.example
         ? this.schema.example : {};
         // : buildExampleFromSchema(this.schema);
+      console.log(JSON.stringify(example, null, 4));
       return Prism.highlight(
         JSON.stringify(example, null, 4),
         Prism.languages.javascript

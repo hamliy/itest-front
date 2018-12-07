@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 20:41:35
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:11:28
+  -- @last_modified_date 2018-12-05 17:26:18
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-
+import mInterface from 'mixins/m-interface';
+import * as iBehavior from 'store/constants/interface';
 import R from 'utils/ramda-r';
 import CSchema from '../c-schema/Index';
 import CResponseStatus from './CResponseStatus';
@@ -52,6 +53,7 @@ export default {
     CResponseStatusSetting,
     CSchema
   },
+  mixins: [mInterface],
   props: {
     response: {
       type: Array,
@@ -72,13 +74,13 @@ export default {
       this.activeIndex = index;
     },
     deleteResponse(index) {
-      this.$store.commit('DELETE_API_RESPONSE', index);
+      this.$store.commit(iBehavior.DELETE_API_RESPONSE, index);
       if (this.activeIndex !== 0) {
         this.activeIndex -= 1;
       }
     },
     addResponse() {
-      this.$store.commit('ADD_API_RESPONSE');
+      this.$store.commit(iBehavior.ADD_API_RESPONSE);
       this.activeIndex = this.response.length - 1;
     },
     updateStatus({ status, statusText }) {
@@ -89,7 +91,7 @@ export default {
     },
     updateResponse(schema) {
       const key = `options.response.${this.activeIndex}`;
-      this.$store.commit('UPDATE_API_PROPS',
+      this.$store.commit(iBehavior.UPDATE_API_PROPS,
         [key, R.clone(schema)]);
     }
   }

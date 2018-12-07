@@ -4,11 +4,18 @@
  ** @description :
  ** @author  hanli
  ** @date 2018-10-09 16:20:32
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-12-03 14:20:17
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-05 17:36:53
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
+
+export const INIT_API = 'INIT_API';
+export const UPDATE_API = 'UPDATE_API';
+export const SAVE_API = 'SAVE_API';
+export const UPDATE_API_PROPS = 'UPDATE_API_PROPS';
+export const ADD_API_RESPONSE = 'ADD_API_RESPONSE';
+export const DELETE_API_RESPONSE = 'DELETE_API_RESPONSE';
 // actions
 export const GET_INTERFACE = 'GET_INTERFACE';
 export const SEARCH_INTERFACE = 'SEARCH_INTERFACE';

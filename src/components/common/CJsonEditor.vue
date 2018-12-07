@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 17:23:16
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 11:11:16
+  -- @last_modified_date 2018-12-05 18:18:59
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -71,7 +71,7 @@ export default {
       }
     },
     value: {
-      type: String,
+      type: Object,
       default: null
     },
     name: {
@@ -84,7 +84,7 @@ export default {
     },
     readonly: {
       type: Boolean,
-      default: true
+      default: false
     },
     resizeAct: {
       type: Boolean,

@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-12-04 20:44:36
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-05 10:27:46
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-05 15:46:20
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -39,14 +39,14 @@ export default {
   name: 'CResponseConfig',
   computed: {
     response() {
-      return this.$store.state.api.options.response;
+      return this.$store.getters.api.options.response;
     },
     delay() {
-      return this.$store.state.api.options.delay;
+      return this.$store.getters.api.options.delay;
     },
     responseIndex: {
       get() {
-        return this.$store.state.api.options.responseIndex;
+        return this.$store.getters.api.options.responseIndex;
       },
       set(value) {
         this.$store.commit('UPDATE_API_PROPS',

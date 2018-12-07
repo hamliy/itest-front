@@ -4,16 +4,24 @@
  ** @description :
  ** @author  hanli
  ** @date 2018-10-09 16:23:26
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-11-26 15:51:02
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-05 17:43:23
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
 import * as behavior from 'store/constants/interface';
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   methods: {
+    ...mapMutations([
+      behavior.SAVE_API,
+      behavior.UPDATE_API,
+      behavior.INIT_API,
+      behavior.UPDATE_API_PROPS,
+      behavior.ADD_API_RESPONSE,
+      behavior.DELETE_API_RESPONSE
+    ]),
     ...mapActions([
       behavior.GET_INTERFACE,
       behavior.SEARCH_INTERFACE,
