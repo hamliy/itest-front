@@ -5,14 +5,47 @@
   -- @author  hanli
   -- @date 2018-12-04 19:59:08
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 19:18:07
+  -- @last_modified_date 2018-12-13 15:35:50
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
 <template>
   <div class="url-box">
-    <el-row type="flex">
-      <el-col :span="24">
+    <el-row>
+      <el-col :span="20">
+        <el-form label-width="80px">
+          <el-form-item label="接口名称" class="required">
+            <el-input
+              v-model="name"/>
+          </el-form-item>
+          <el-form-item label="接口信息">
+            <el-input
+              v-model="path"
+              placeholder="\path"
+              class="input-with-select">
+              <el-select
+                slot="prepend"
+                v-model="method"
+                placeholder="请选择">
+                <el-option label="GET" value="get"/>
+                <el-option label="POST" value="post"/>
+                <el-option label="PUT" value="put"/>
+                <el-option label="PATCH" value="patch"/>
+                <el-option label="DELETE" value="delete"/>
+              </el-select>
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </el-col>
+      <el-col :span="4">
+        <el-button
+          class="api-save"
+          type="primary"
+          @click="save()"/>
+      </el-col>
+    </el-row>
+    <!-- <el-row type="flex">
+      <el-col :span="12">
         <el-input
           v-model="name"
           label="接口名："/>
@@ -31,13 +64,13 @@
           </el-select>
         </el-input>
       </el-col>
-      <el-col class="control">
+      <el-col span="12" class="control">
         <el-button
           class="api-save"
           type="primary"
           @click="save()"/>
       </el-col>
-    </el-row>
+    </el-row> -->
   </div>
 </template>
 
@@ -162,6 +195,8 @@ export default {
   }
 
   .api-save {
+    float: right;
+    margin-right: 20px;
     width: 91px;
   }
 

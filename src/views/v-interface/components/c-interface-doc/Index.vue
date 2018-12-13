@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 10:41:31
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 20:43:05
+  -- @last_modified_date 2018-12-13 15:26:10
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -15,7 +15,8 @@
       <div class="field name">
         <h2>
           <label>{{ api.name }}</label>
-          <span :class="methodStyle" class="method">{{ method }}</span>
+          （<span :class="methodStyle" class="method">{{ method }}</span>
+          <label>{{ api.path }}</label>）
         </h2>
         <div class="control">
           <el-button class="follow" @click="diff()">历史对比</el-button>

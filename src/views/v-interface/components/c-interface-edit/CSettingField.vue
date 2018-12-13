@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 19:58:29
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 21:00:28
+  -- @last_modified_date 2018-12-13 14:49:57
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -81,9 +81,6 @@ export default {
   .setting-field {
     position: relative;
     margin-top: 20px;
-
-    /* overflow-x: scroll; */
-
     border: 1px solid #d3dce6;
     border-radius: 5px;
     background-color: #fff;
@@ -99,14 +96,14 @@ export default {
     & > .hd {
       text-align: left;
       border-bottom: 1px solid #d3dce6;
-      line-height: 36px;
+      line-height: 40px;
       font-size: 16px;
       color: #333;
       padding: 0 10px;
 
       button {
         float: right;
-        margin: 6px 10px 6px 0;
+        margin: 8px 10px 0 0;
       }
     }
 

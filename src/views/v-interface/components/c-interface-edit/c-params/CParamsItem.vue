@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:25:46
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-06 18:02:01
+  -- @last_modified_date 2018-12-12 17:55:00
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -20,7 +20,7 @@
       @click="expandParam">
       <span
         :class="{expanded: expanded}"
-        class="el-tree-node__expand-icon"></span>
+        class="el-tree-node__expand-icon el-icon-caret-right"></span>
     </div>
     <div
       :style="styleObject"
