@@ -9,6 +9,7 @@
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
-import buildExampleFromSchema from 'mocker-dsl-core/lib/buildExampleFromSchema';
+import buildExampleFromSchema
+    from 'node/mocker-dsl-core/lib/buildExampleFromSchema';
 
 export default buildExampleFromSchema;

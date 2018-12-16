@@ -10,18 +10,6 @@
  ** ********************************************************
  */
 
-/**
- ** ********************************************************
- ** @file build-schema-from-example.js
- ** @description :
- ** @author  hanli
- ** @date 2018-12-04 21:52:05
- ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-05 10:58:49
- ** @copyright (c) 2018 @itest/itest-front
- ** ********************************************************
- */
-
 import R from './ramda-r';
 import Param from '../model/Param';
 

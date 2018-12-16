@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Prism from 'prismjs';
+import Prism from 'node/prismjs';
 import CInterfaceDocParamsTable from './CInterfaceDocParamsTable';
 
 export default {

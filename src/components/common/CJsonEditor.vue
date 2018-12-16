@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import * as ace from 'brace';
-import 'brace/mode/json';
+import * as ace from 'node/brace';
+import 'node/brace/mode/json';
 import R from 'utils/ramda-r';
 
 export default {

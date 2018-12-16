@@ -21,7 +21,7 @@ module.exports = {
     env: dev,
     quiet: false,
     proxy: {
-      '/api': { target: 'http://172.20.166.138:8083' }
+      '/api': { target: 'http://localhost:8083' }
     },
     dllPattern: '',
     dllManifest: 'dev-manifest.json'

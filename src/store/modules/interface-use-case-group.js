@@ -20,9 +20,10 @@ import {
 
 import * as behavior from '../constants/interface-use-case-group';
 
+
 const actions = {
-  [behavior.GET_INTERFACE_USE_CASE_GROUP](context, params) {
-    return getInterfaceUseCaseGroup(params);
+  [behavior.GET_INTERFACE_USE_CASE_GROUP]() {
+    return getInterfaceUseCaseGroup();
   },
   [behavior.SEARCH_INTERFACE_USE_CASE_GROUP](context, params) {
     return searchInterfaceUseCaseGroup(params);

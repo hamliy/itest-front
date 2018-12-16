@@ -10,6 +10,6 @@
  ** ********************************************************
  */
 
-import * as R from 'ramda';
+import * as R from 'node/ramda';
 
 export default R;

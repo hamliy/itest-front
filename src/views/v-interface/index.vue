@@ -419,7 +419,7 @@ export default {
   }
 
   .box-card {
-    width: 380px;
+    width: 300px;
     min-height: calc(100vh - 72px);
     border-radius: 4px;
     padding: 20px;

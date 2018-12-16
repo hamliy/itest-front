@@ -11,7 +11,9 @@
  */
 
 import {
-  getInterfaceUseCase,
+  getInterfaceUseCaseAll,
+  getInterfaceUseCaseById,
+  getInterfaceUseCaseByGroupId,
   searchInterfaceUseCase,
   createInterfaceUseCase,
   updateInterfaceUseCase,
@@ -24,8 +26,14 @@ import {
 import * as behavior from '../constants/interface-use-case';
 
 const actions = {
-  [behavior.GET_INTERFACE_USE_CASE](context, params) {
-    return getInterfaceUseCase(params);
+  [behavior.GET_INTERFACE_USE_CASE_ALL]() {
+    return getInterfaceUseCaseAll();
+  },
+  [behavior.GET_INTERFACE_USE_CASE_BY_ID](context, params) {
+    return getInterfaceUseCaseById(params);
+  },
+  [behavior.GET_INTERFACE_USE_CASE_BY_GROUP_ID](context, params) {
+    return getInterfaceUseCaseByGroupId(params);
   },
   [behavior.SEARCH_INTERFACE_USE_CASE](context, params) {
     return searchInterfaceUseCase(params);

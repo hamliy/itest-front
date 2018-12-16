@@ -51,7 +51,7 @@ export default [
         path: 'info',
         name: '基本信息',
         component: () => import('views/v-interface'),
-        meta: { title: '接口数据', icon: 'table' }
+        meta: { title: '接口信息', icon: 'table' }
       },
       {
         path: 'invoke',
@@ -62,7 +62,7 @@ export default [
     ]
   },
   {
-    path: '/use-case',
+    path: '/api-use-case',
     component: () => import('components/global/LMain'),
     redirect: '/use-case/info',
     name: '用例',
@@ -71,8 +71,8 @@ export default [
       {
         path: 'info',
         name: '基本信息',
-        component: () => import('views/v-use-case'),
-        meta: { title: '用例数据', icon: 'table' }
+        component: () => import('views/v-api-use-case/Index'),
+        meta: { title: '接口用例', icon: 'table' }
       }
     ]
   },
@@ -87,12 +87,6 @@ export default [
         path: 'image',
         name: '图片数据',
         component: () => import('views/v-data/v-data-images/VDataImages'),
-        meta: { title: '图片数据', icon: 'table' }
-      },
-      {
-        path: 'params',
-        name: '参数数据',
-        component: () => import('views/v-use-case'),
         meta: { title: '图片数据', icon: 'table' }
       }
     ]

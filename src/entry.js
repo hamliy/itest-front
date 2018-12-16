@@ -12,7 +12,7 @@
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import 'prismjs/themes/prism.css';
+import 'node/prismjs/themes/prism.css';
 // import Viewer from 'viewerjs';
 import 'core-js/shim';
 import { isDev } from 'envUtil';

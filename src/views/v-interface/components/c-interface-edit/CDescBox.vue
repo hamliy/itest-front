@@ -17,7 +17,6 @@
       id="desc-editor"
       v-model="desc"
       placeholder="其他备注"
-      autofocus
       @change="updateDesc"></textarea>
   </div>
 </template>

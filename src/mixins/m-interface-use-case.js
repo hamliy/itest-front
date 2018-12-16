@@ -15,7 +15,9 @@ import { mapActions } from 'vuex';
 export default {
   methods: {
     ...mapActions([
-      behavior.GET_INTERFACE_USE_CASE,
+      behavior.GET_INTERFACE_USE_CASE_ALL,
+      behavior.GET_INTERFACE_USE_CASE_BY_ID,
+      behavior.GET_INTERFACE_USE_CASE_BY_GROUP_ID,
       behavior.SEARCH_INTERFACE_USE_CASE,
       behavior.CREATE_INTERFACE_USE_CASE,
       behavior.UPDATE_INTERFACE_USE_CASE,

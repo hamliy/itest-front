@@ -17,7 +17,7 @@
       <ul>
         <li
           v-for="(r, key) in types"
-          v-show="method !== 'get' || r.name !== 'body'"
+          v-show="method.toLowerCase() !== 'get' || r.name !== 'body'"
           :class="[{active: activeType === r.name}]"
           :key="key"
           class="item"

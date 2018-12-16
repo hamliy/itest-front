@@ -12,7 +12,9 @@
 import { get, post } from './index';
 
 export const URL = {
-  get: '/interfaces/get',
+  getAll: '/interface-use-case/getAll',
+  getById: '/interface-use-case/getById',
+  getByGroupId: '/interface-use-case/getByGroupId',
   search: '/interface-use-case/search',
   create: '/interface-use-case/create',
   update: '/interface-use-case/update',
@@ -22,8 +24,11 @@ export const URL = {
   executeGroup: '/interface-use-case/execute/group'
 };
 
-export const getInterfaceUseCase = params => get(URL.get, params);
-export const searchInterfaceUseCase = params => post(URL.search, params);
+export const getInterfaceUseCaseAll = () => post(URL.getAll);
+export const getInterfaceUseCaseById = params => get(URL.getById, params);
+export const getInterfaceUseCaseByGroupId =
+  params => get(URL.getByGroupId, params);
+export const searchInterfaceUseCase = params => get(URL.search, params);
 export const createInterfaceUseCase = params => post(URL.create, params);
 export const updateInterfaceUseCase = params => post(URL.update, params);
 export const deleteInterfaceUseCase = params => post(URL.delete, params);

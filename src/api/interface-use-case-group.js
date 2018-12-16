@@ -9,7 +9,7 @@
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
-import { get, post } from './index';
+import { post } from './index';
 
 export const URL = {
   get: '/interface-use-case-group/get',
@@ -19,7 +19,7 @@ export const URL = {
   delete: '/interface-use-case-group/delete'
 };
 
-export const getInterfaceUseCaseGroup = params => get(URL.get, params);
+export const getInterfaceUseCaseGroup = () => post(URL.get, {});
 export const searchInterfaceUseCaseGroup = params => post(URL.search, params);
 export const createInterfaceUseCaseGroup = params => post(URL.create, params);
 export const updateInterfaceUseCaseGroup = params => post(URL.update, params);
