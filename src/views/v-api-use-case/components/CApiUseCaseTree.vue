@@ -4,8 +4,8 @@
   -- @description : 用例树
   -- @author  hanli
   -- @date 2018-10-09 17:21:45
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-03 16:01:03
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-21 17:39:06
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -23,7 +23,7 @@
       </div>
     </c-view-header>
     <c-group-tree
-      ref="treeCard"
+      :ref-name="'useCaseGroupTree'"
       :group-data="groupData"
       :theme="'用例'"
       :prop="prop"
@@ -102,9 +102,9 @@
         return {
           name: '',
           desc: '',
-          path: '',
-          method: 'GET',
+          level: 0,
           groupId: id,
+          interfaceId: null,
           options: {}
         };
       },
@@ -129,17 +129,7 @@
       },
       // 点击节点
       handleNodeClick(node, data) {
-        const nodeType = this.judgeNode(node);
-        if (nodeType === 'root') {
-          this.isSelectUseCase = false;
-          this.getAllApiUseCase();
-        } else if (nodeType === 'useCase') {
-          this.isSelectUseCase = true;
-          this.getApiUseCaseById(data.id);
-        } else if (nodeType === 'group') {
-          this.isSelectUseCase = false;
-          this.getApiUseCaseByGroup(data.id);
-        }
+        this.$emit('nodeCheck', node, data);
       },
       // 点击节点编辑
       handleGroupEdit(node, data) {
@@ -162,47 +152,13 @@
         }).then(() => {
           const nodeType = this.judgeNode(node);
           if (nodeType === 'group') {
-            this.removeGroup(node, data);
+            this.removeGroup(data.id);
           } else {
-            this.removeInterface(node, data);
+            this.removeUseCase(data.id);
           }
         }).catch(() => '');
       },
-      // 获取用例信息
-      getApiUseCaseById(useCaseId) {
-        // this.initInterfaceInfo();
-        this[cInterfaceUseCase.GET_INTERFACE_USE_CASE_BY_ID]({
-          useCaseId
-        })
-        .then(res => {
-          this.useCaseInfo = Object.assign({}, res.data);
-        })
-        .catch(err => {
-          this.$_mUtil_messageError(err);
-        });
-      },
-      // 获取所有用例信息
-      getAllApiUseCase() {
-        // this.initInterfaceInfo();
-        this[cInterfaceUseCase.GET_INTERFACE_USE_CASE_ALL]()
-        .then(res => {
-          this.groupInfo = res.data;
-        }).catch(err => {
-          this.$_mUtil_messageError(err);
-        });
-      },
-      // 获取组用例信息
-      getApiUseCaseByGroup(useCaseGroupId) {
-        this[cInterfaceUseCase.GET_INTERFACE_USE_CASE_BY_GROUP_ID]({
-          useCaseGroupId
-        })
-        .then(res => {
-          this.groupInfo = res.data;
-        })
-        .catch(err => {
-          this.$_mUtil_messageError(err);
-        });
-      },
+
       createGroup(formData) {
         this[cInterfaceUseCaseGroup.CREATE_INTERFACE_USE_CASE_GROUP](formData)
         .then(() => {
@@ -224,7 +180,22 @@
           this.dialogInterfaceVisible = false;
           this.$message({
             showClose: true,
-            message: '新增接口成功。',
+            message: '新增用例成功。',
+            type: 'success'
+          });
+          this.fetchTreeData();
+        })
+        .catch(err => {
+          this.$_mUtil_messageError(err);
+        });
+      },
+      removeGroup(id) {
+        this[cInterfaceUseCaseGroup.DELETE_INTERFACE_USE_CASE_GROUP]({ id })
+        .then(() => {
+          this.dialogGroupVisible = false;
+          this.$message({
+            showClose: true,
+            message: '删除成功。',
             type: 'success'
           });
           this.fetchTreeData();
@@ -238,14 +209,6 @@
 </script>
 
 <style lang="scss">
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    margin-bottom: 18px;
-  }
-
   .box-card {
     width: 300px;
     min-height: calc(100vh - 72px);
@@ -258,36 +221,8 @@
     transition: 0.3s;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 
-    .live-scrollbar {
-      height: 100%;
-    }
-
-    .interface-tree {
-      padding: 10px 0;
-    }
-
     .view-header {
       padding: 0 10px 20px;
     }
-  }
-
-  .icons-list {
-    position: absolute;
-    right: 20px;
-    visibility: hidden;
-
-    svg:hover {
-      opacity: 0.5;
-    }
-  }
-
-  .el-tree-node__content:hover {
-    .custom-tree-node > .icons-list {
-      visibility: visible;
-    }
-  }
-
-  .is-current > .el-tree-node__content > .custom-tree-node > .icons-list {
-    visibility: visible;
   }
 </style>

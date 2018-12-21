@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 19:58:11
+  -- @last_modified_date 2018-12-17 20:12:29
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -70,7 +70,6 @@ export default {
   data() {
     return {
       filterText: '',
-      groupData: [],
       dialogInterfaceVisible: false,
       dialogGroupVisible: false,
       id: 1000,
@@ -129,6 +128,11 @@ export default {
       }
     };
   },
+  computed: {
+    groupData() {
+      return this.$store.getters.apiGroup;
+    }
+  },
   watch: {
     filterText(val) {
       this.$refs.tree2.filter(val);
@@ -179,10 +183,7 @@ export default {
     },
     // 获取分组接口信息
     getGroupInterface() {
-      this[cInterface.GET_GROUP_INTERFACE]({
-      })
-      .then(res => {
-        this.groupData = res.data;
+      this[cInterfaceGroup.GET_INTERFACE_GROUP]({
       })
       .catch(err => {
         this.$_mUtil_messageError(err);

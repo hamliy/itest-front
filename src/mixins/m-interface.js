@@ -5,7 +5,7 @@
  ** @author  hanli
  ** @date 2018-10-09 16:23:26
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-05 17:43:23
+ ** @last_modified_date 2018-12-17 16:52:56
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -26,7 +26,6 @@ export default {
       behavior.GET_INTERFACE,
       behavior.SEARCH_INTERFACE,
       behavior.CREATE_INTERFACE,
-      behavior.GET_GROUP_INTERFACE,
       behavior.GET_INTERFACE_BY_GROUP,
       behavior.UPDATE_INTERFACE,
       behavior.DELETE_INTERFACE,

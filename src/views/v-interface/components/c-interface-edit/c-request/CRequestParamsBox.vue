@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:17:55
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 17:49:47
+  -- @last_modified_date 2018-12-19 10:23:19
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -27,13 +27,9 @@
 <script>
 
 import R from 'utils/ramda-r';
-import CParams from '../c-params/Index';
 
 export default {
   name: 'CRequestParamsBox',
-  components: {
-    CParams
-  },
   props: {
     params: {
       type: Object,

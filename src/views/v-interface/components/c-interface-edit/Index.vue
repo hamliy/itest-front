@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 19:55:11
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 16:47:49
+  -- @last_modified_date 2018-12-19 10:01:10
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -49,7 +49,6 @@ import CResponseConfig from './c-response/CResponseConfig';
 import CResultBox from './CResultBox';
 import CBaseInfoBox from './CBaseInfoBox';
 import CDescBox from './CDescBox';
-import CSettingField from './CSettingField';
 
 export default {
   name: 'CInterfaceEdit',
@@ -59,8 +58,7 @@ export default {
     CResponseConfig,
     CResultBox,
     CDescBox,
-    CBaseInfoBox,
-    CSettingField
+    CBaseInfoBox
   },
   data() {
     return {

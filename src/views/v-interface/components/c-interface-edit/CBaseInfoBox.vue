@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 19:59:08
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-13 15:35:50
+  -- @last_modified_date 2018-12-19 14:10:28
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -145,7 +145,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .url-box {
     .el-input__inner {
       &:hover,
@@ -154,7 +154,7 @@ export default {
       }
     }
 
-    .el-select .el-input__inner {
+    .input-with-select .el-select {
       width: 104px;
     }
 

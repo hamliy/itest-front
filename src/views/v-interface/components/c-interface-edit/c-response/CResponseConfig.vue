@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 20:44:36
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 15:46:20
+  -- @last_modified_date 2018-12-17 19:55:37
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -62,7 +62,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .config-box {
     display: inline-block;
     margin-left: 36px;

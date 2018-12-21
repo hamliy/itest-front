@@ -5,7 +5,7 @@
  ** @author  hanli
  ** @date 2018-10-09 16:21:20
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-05 19:39:53
+ ** @last_modified_date 2018-12-17 16:52:42
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -14,7 +14,6 @@ import {
   getInterface,
   searchInterface,
   createInterface,
-  getGroupInterface,
   updateInterface,
   deleteInterface,
   getInterfaceHistory,
@@ -101,9 +100,6 @@ const actions = {
   },
   [behavior.CREATE_INTERFACE](context, params) {
     return createInterface(params);
-  },
-  [behavior.GET_GROUP_INTERFACE](context, params) {
-    return getGroupInterface(params);
   },
   [behavior.GET_INTERFACE_BY_GROUP](context, params) {
     return getInterfaceByGroup(params);

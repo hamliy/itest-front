@@ -4,8 +4,8 @@
   -- @description : 组 树组件
   -- @author  hanli
   -- @date 2018-10-09 17:21:45
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-12-03 16:01:03
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-17 20:19:36
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -17,8 +17,8 @@
       placeholder="输入关键字进行过滤"/>
     <el-scrollbar class="live-scrollbar">
       <el-tree
-        ref="interfaceTree"
-        :data="groupData"
+        :ref="refName"
+        :data="dataWithRoot"
         :props="prop"
         :filter-node-method="filterNode"
         :expand-on-click-node="false"
@@ -26,7 +26,7 @@
         highlight-current
         default-expand-all
         class="interface-tree"
-        @node-click="handleClick">
+        @current-change="handleClick">
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>
             <span v-if="node.data.id !== -1">
@@ -94,16 +94,45 @@
       theme: {
         type: String,
         default: ''
+      },
+      refName: {
+        type: String,
+        default: null
       }
     },
     data() {
       return {
-        filterText: ''
+        filterText: '',
+        showTree: []
       };
+    },
+    computed: {
+      dataWithRoot() {
+        if (this.groupData.length === 0) {
+          return [];
+        }
+        const root = {};
+        const data = [...this.groupData];
+        root[this.prop.children] = [];
+        root[this.prop.label] = '所有用例';
+        root.id = -1;
+        data.splice(0, 0, root);
+        return data;
+      }
     },
     watch: {
       filterText(val) {
-        this.$refs.interfaceTree.filter(val);
+        this.$refs[this.refName].filter(val);
+      },
+      dataWithRoot() {
+        this.$nextTick(() => {
+          this.$refs[this.refName].setCurrentKey(-1);
+          const data = this.$refs[this.refName].getCurrentNode();
+          if (data) {
+            const node = this.$refs[this.refName].getNode(-1);
+            this.handleClick(data, node);
+          }
+        });
       }
     },
     methods: {
@@ -128,4 +157,35 @@
     }
   };
 </script>
+
+
+<style lang="scss" scoped>
+  .live-scrollbar {
+    height: 100%;
+  }
+
+  .interface-tree {
+    padding: 10px 0 20px;
+  }
+
+  .icons-list {
+    position: absolute;
+    right: 20px;
+    visibility: hidden;
+
+    svg:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .el-tree-node__content:hover {
+    .custom-tree-node > .icons-list {
+      visibility: visible;
+    }
+  }
+
+  .is-current > .el-tree-node__content > .custom-tree-node > .icons-list {
+    visibility: visible;
+  }
+</style>
 

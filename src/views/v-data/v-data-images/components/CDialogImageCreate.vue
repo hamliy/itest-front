@@ -4,8 +4,8 @@
   -- @description :
   -- @author  hanli
   -- @date 2018-10-30 21:38:49
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-11-01 17:47:47
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-17 19:55:18
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -171,7 +171,7 @@
   };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
   .el-select .el-input {
     width: 130px;
   }
