@@ -4,8 +4,8 @@
  ** @description :
  ** @author  hanli
  ** @date 2018-10-09 16:18:13
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-11-26 15:28:42
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-21 17:08:02
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -26,9 +26,9 @@ export const URL = {
 
 export const getInterfaceUseCaseAll = () => post(URL.getAll);
 export const getInterfaceUseCaseById = params => get(URL.getById, params);
-export const getInterfaceUseCaseByGroupId =
-  params => get(URL.getByGroupId, params);
-export const searchInterfaceUseCase = params => get(URL.search, params);
+export const getInterfaceUseCaseByGroupId = params =>
+  get(URL.getByGroupId, params);
+export const searchInterfaceUseCase = params => post(URL.search, params);
 export const createInterfaceUseCase = params => post(URL.create, params);
 export const updateInterfaceUseCase = params => post(URL.update, params);
 export const deleteInterfaceUseCase = params => post(URL.delete, params);

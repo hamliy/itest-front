@@ -1,11 +1,11 @@
 /**
  ** ********************************************************
  ** @file api-init-data.js
- ** @description :
+ ** @description : 初始化接口数据
  ** @author hanli <lihan_li@test.com>
  ** @date 2018-12-05 15:12:00
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-05 17:34:01
+ ** @last_modified_date 2018-12-20 15:55:47
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */

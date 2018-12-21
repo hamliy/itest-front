@@ -1,64 +1,57 @@
 <!--
   -- --------------------------------------------------------
-  -- @file Index.vue
-  -- @description :
-  -- @author  hanli
-  -- @date 2018-12-04 21:16:20
+  -- @file CRequestDataBox.vue
+  -- @description : 用例请求数据
+  -- @author hanli <lihan_li@test.com>
+  -- @date 2018-12-19 14:17:35
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-20 15:31:03
+  -- @last_modified_date 2018-12-21 11:15:12
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
 
+
 <template>
-  <el-row type="flex" class="request-box">
-    <el-col class="types">
-      <div class="control">Types</div>
-      <ul>
-        <li
-          v-for="(r, key) in types"
-          v-show="method.toLowerCase() !== 'get' || r.name !== 'body'"
-          :class="[{active: activeType === r.name}]"
-          :key="key"
-          class="item"
-          @click="changeSchema(r.name)">
-          <span>
-            {{ r.label }}
-            <el-tooltip
-              v-if="r.tip"
-              :content="r.tip"
-              placement="top">
-              <span class="mocker-tip">?</span>
-            </el-tooltip>
-          </span>
-        </li>
-        <li
-          key="headers"
-          :class="[{active: activeType === 'headers'}]"
-          class="item"
-          @click="changeSchema('headers')">
-          <span>Header</span>
-        </li>
-      </ul>
-    </el-col>
-    <el-col class="schema-content">
+  <el-container class="request-box">
+    <el-header v-if="activeType !== 'headers'">
+      <div style="margin-top: 20px;">
+        <el-radio-group v-model="dataType" size="small">
+          <el-radio
+            v-for="(r, key) in types"
+            v-show="method.toLowerCase() !== 'get' || r.name !== 'body'"
+            :key="key"
+            :label="r.name"
+            border>
+            <span>
+              {{ r.label }}
+              <el-tooltip
+                v-if="r.tip"
+                :content="r.tip"
+                placement="top">
+                <span class="mocker-tip">?</span>
+              </el-tooltip>
+            </span>
+          </el-radio>
+        </el-radio-group>
+      </div>
+    </el-header>
+    <el-main>
       <c-schema
         :schema="activeSchema"
         :name="activeType"
         :fullscreen="fullscreen"
         @change="updateParams"/>
-    </el-col>
-  </el-row>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-import mInterface from 'mixins/m-interface';
-import * as iBehavior from 'store/constants/interface';
+import mInterface from 'mixins/m-interface-use-case';
+import * as iBehavior from 'store/constants/interface-use-case';
 import R from 'utils/ramda-r';
 
-
 export default {
-  name: 'CRequest',
+  name: 'CRequestDataBox',
   mixins: [mInterface],
   props: {
     fullscreen: {
@@ -94,13 +87,22 @@ export default {
         this.headers : this.localParams[this.activeType];
     },
     headers() {
-      return this.$store.getters.api.options.headers;
+      return this.$store.getters.apiUseCase.options.headers;
     },
     params() {
       return R.clone(this.$store.getters.api.options.params);
     },
     examples() {
       return R.clone(this.$store.getters.api.options.examples);
+    },
+    dataType: {
+      get() {
+        return this.$store.getters.apiUseCase.options.type;
+      },
+      set(value) {
+        this.$store.commit(iBehavior.UPDATE_API_USE_CASE_PROPS,
+          ['options.type', value]);
+      }
     },
     localParams() {
       const localParams = {};
@@ -199,4 +201,3 @@ export default {
     }
   }
 </style>
-

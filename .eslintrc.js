@@ -3,8 +3,8 @@
  ** @file .eslintrc.js
  ** @author
  ** @date 2017-12-13 13:59:40
- ** @last_modified_by  hanli
- ** @last_modified_date 2018-12-05 09:49:16
+ ** @last_modified_by hanli <lihan_li@test.com>
+ ** @last_modified_date 2018-12-05 14:41:46
  ** @requires https://www.npmjs.com/package/eslint
  ** @requires https://www.npmjs.com/package/babel-eslint
  ** @requires https://www.npmjs.com/package/eslint-import-resolver-webpack

@@ -5,7 +5,7 @@
  ** @author  hanli
  ** @date 2018-10-09 16:20:32
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-05 17:36:53
+ ** @last_modified_date 2018-12-17 16:52:49
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -23,5 +23,4 @@ export const CREATE_INTERFACE = 'CREATE_INTERFACE';
 export const UPDATE_INTERFACE = 'UPDATE_INTERFACE';
 export const DELETE_INTERFACE = 'DELETE_INTERFACE';
 export const GET_INTERFACE_HISTORY = 'GET_INTERFACE_HISTORY';
-export const GET_GROUP_INTERFACE = 'GET_GROUP_INTERFACE';
 export const GET_INTERFACE_BY_GROUP = 'GET_INTERFACE_BY_GROUP';

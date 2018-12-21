@@ -1,11 +1,11 @@
 <!--
   -- --------------------------------------------------------
   -- @file CSettingField.vue
-  -- @description :
+  -- @description : 通用框，支持收缩 全屏
   -- @author  hanli
   -- @date 2018-12-04 19:58:29
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-13 14:49:57
+  -- @last_modified_date 2018-12-19 10:00:50
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->

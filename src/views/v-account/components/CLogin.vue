@@ -3,8 +3,8 @@
   -- @file CLogin.vue
   -- @author  hanli
   -- @date 2018-09-19 11:18:44
-  -- @last_modified_by  hanli
-  -- @last_modified_date 2018-11-26 17:29:09
+  -- @last_modified_by hanli <lihan_li@test.com>
+  -- @last_modified_date 2018-12-17 19:57:56
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -104,7 +104,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
   $bg: #2d3a4b;
   $light_gray: #eee;
 
