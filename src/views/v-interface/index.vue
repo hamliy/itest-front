@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-17 20:12:29
+  -- @last_modified_date 2018-12-24 16:17:21
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -409,10 +409,6 @@ export default {
 <style lang="scss">
   .text {
     font-size: 14px;
-  }
-
-  .item {
-    margin-bottom: 18px;
   }
 
   .content-page {

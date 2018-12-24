@@ -5,7 +5,7 @@
  ** @author  hanli
  ** @date 2018-10-09 16:21:20
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-17 16:52:42
+ ** @last_modified_date 2018-12-24 11:13:40
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -94,6 +94,9 @@ const actions = {
     return getInterface(params).then(response => {
       onGetInterfaceSuccess(context, response);
     });
+  },
+  [behavior.GET_INTERFACE_INFO](context, params) {
+    return getInterface(params);
   },
   [behavior.SEARCH_INTERFACE](context, params) {
     return searchInterface(params);

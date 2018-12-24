@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-09-30 17:39:48
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-21 17:39:28
+  -- @last_modified_date 2018-12-24 17:13:03
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -35,6 +35,7 @@ import * as cInterfaceUseCase from 'store/constants/interface-use-case';
 import * as cInterfaceUseCaseGroup
   from 'store/constants/interface-use-case-group';
 import mInterfaceUseCaseGroup from 'mixins/m-interface-use-case-group';
+import mEnvironment from 'mixins/m-environment';
 import mUtil from 'mixins/m-util';
 import CApiUseCaseTree from './components/CApiUseCaseTree';
 import CApiUseCaseList from './components/CApiUseCaseList';
@@ -48,7 +49,7 @@ export default {
     CApiUseCaseEdit,
     CApiUseCaseList
   },
-  mixins: [mInterfaceUseCaseGroup, mInterfaceUseCase, mUtil],
+  mixins: [mInterfaceUseCaseGroup, mInterfaceUseCase, mUtil, mEnvironment],
   data() {
     return {
       listLoading: false,
@@ -68,6 +69,7 @@ export default {
   created() {
     this.fetchTreeData();
     this.refreshAllGroupApi();
+    this.refreshAllEnvApi();
   },
   methods: {
     fetchTreeData() {
@@ -79,6 +81,10 @@ export default {
     // 获取所有接口信息 按组分
     refreshAllGroupApi() {
       this.$store.dispatch('GET_INTERFACE_GROUP');
+    },
+    // 获取所有环境信息 按组分
+    refreshAllEnvApi() {
+      this.$store.dispatch('GET_ENVIRONMENT');
     },
     // 判断树节点类型
     judgeNode(node) {

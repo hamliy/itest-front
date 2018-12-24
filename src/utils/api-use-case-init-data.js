@@ -5,7 +5,7 @@
  ** @author hanli <lihan_li@test.com>
  ** @date 2018-12-20 15:55:36
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-21 11:10:02
+ ** @last_modified_date 2018-12-24 14:09:26
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -21,12 +21,22 @@ const apiUseCaseInitData = () => ({
   options: {
     path: '',
     method: 'get',
-    headers: [new Param()],
+    headers: {
+      example: {},
+      params: [new Param()]
+    },
     delay: 0,
     data: {
-      query: [new Param()],
-      body: [new Param()],
-      path: [new Param()]
+      examples: {
+        query: new Param(),
+        body: new Param(),
+        path: new Param()
+      },
+      params: {
+        query: [new Param()],
+        body: [new Param()],
+        path: [new Param()]
+      }
     },
     type: 'query',
     expect: []

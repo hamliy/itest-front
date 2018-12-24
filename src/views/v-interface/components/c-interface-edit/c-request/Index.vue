@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-12-04 21:16:20
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-20 15:31:03
+  -- @last_modified_date 2018-12-24 16:13:54
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -164,6 +164,23 @@ export default {
       height: 100%;
     }
 
+    .mocker-tip {
+      display: none;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      font-size: 12px;
+      border-radius: 50%;
+      text-align: center;
+      cursor: pointer;
+      vertical-align: middle;
+      margin: 2px 3px 0 0;
+      background: #97a8be;
+      color: #fff;
+      float: right;
+      background-color: #bfcbd9;
+    }
+
     .types {
       .control {
         height: 36px;
@@ -183,13 +200,6 @@ export default {
         &.active {
           background-color: #fafafa;
           color: #333;
-        }
-
-        .mocker-tip {
-          margin: 2px 3px 0 0;
-          float: right;
-          background-color: #bfcbd9;
-          display: none;
         }
 
         &:hover .mocker-tip {

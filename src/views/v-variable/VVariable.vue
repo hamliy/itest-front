@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-09-25 16:38:10
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-05 10:36:20
+  -- @last_modified_date 2018-12-24 17:29:21
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -87,7 +87,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      this[environment.GET_ENVIRONMENT](this.listQuery)
+      this[environment.SEARCH_ENVIRONMENT](this.listQuery)
       .then(response => {
         const items = response.data.data;
         const dataSet = items.map(v => {

@@ -5,16 +5,39 @@
   -- @author  hanli
   -- @date 2018-12-04 20:41:35
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-20 15:16:30
+  -- @last_modified_date 2018-12-24 09:40:56
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
 
 <template>
-  <el-container class="out-box">
-    <el-header>Header</el-header>
-    <el-main>Main</el-main>
-  </el-container>
+  <!-- <el-container class="out-box"> -->
+  <el-row type="flex" class="out-box">
+    <el-col class="status">
+      <c-response-status
+        :response="response"
+        :active-index="activeIndex"
+        @add="addResponse"
+        @delete="deleteResponse"
+        @change="changeSchema"/>
+    </el-col>
+    <el-col class="schema-content">
+      <c-schema
+        :schema="response[activeIndex]"
+        :fullscreen="fullscreen"
+        @change="updateResponse">
+        <el-tab-pane
+          class="tab-item"
+          label="Status"
+          name="status">
+          <c-response-status-setting
+            :schema="response[activeIndex]"
+            @change="updateStatus"/>
+        </el-tab-pane>
+      </c-schema>
+    </el-col>
+  </el-row>
+  <!-- </el-container> -->
 </template>
 
 <script>

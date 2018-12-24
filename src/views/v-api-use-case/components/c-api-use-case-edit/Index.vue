@@ -5,7 +5,7 @@
   -- @author hanli <lihan_li@test.com>
   -- @date 2018-12-17 17:02:24
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-21 17:34:58
+  -- @last_modified_date 2018-12-24 16:44:30
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -18,7 +18,7 @@
         slot="header"
         v-model="reqActive"
         class="result-tabs">
-        <el-tab-pane label="Headers" name="header"/>
+        <el-tab-pane label="Headers" name="headers"/>
         <el-tab-pane label="Body" name="body"/>
       </el-tabs>
       <template slot-scope="props">
@@ -76,7 +76,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .api-box {
     padding: 20px;
     width: 100%;

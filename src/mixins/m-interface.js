@@ -5,7 +5,7 @@
  ** @author  hanli
  ** @date 2018-10-09 16:23:26
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-17 16:52:56
+ ** @last_modified_date 2018-12-24 11:13:57
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -24,6 +24,7 @@ export default {
     ]),
     ...mapActions([
       behavior.GET_INTERFACE,
+      behavior.GET_INTERFACE_INFO,
       behavior.SEARCH_INTERFACE,
       behavior.CREATE_INTERFACE,
       behavior.GET_INTERFACE_BY_GROUP,

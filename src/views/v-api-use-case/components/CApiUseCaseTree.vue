@@ -5,7 +5,7 @@
   -- @author  hanli
   -- @date 2018-10-09 17:21:45
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-21 17:39:06
+  -- @last_modified_date 2018-12-24 14:14:35
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
@@ -177,7 +177,7 @@
       createInterfaceUseCase(formData) {
         this[cInterfaceUseCase.CREATE_INTERFACE_USE_CASE](formData)
         .then(() => {
-          this.dialogInterfaceVisible = false;
+          this.dialogUseCaseVisible = false;
           this.$message({
             showClose: true,
             message: '新增用例成功。',
@@ -192,7 +192,20 @@
       removeGroup(id) {
         this[cInterfaceUseCaseGroup.DELETE_INTERFACE_USE_CASE_GROUP]({ id })
         .then(() => {
-          this.dialogGroupVisible = false;
+          this.$message({
+            showClose: true,
+            message: '删除成功。',
+            type: 'success'
+          });
+          this.fetchTreeData();
+        })
+        .catch(err => {
+          this.$_mUtil_messageError(err);
+        });
+      },
+      removeUseCase(id) {
+        this[cInterfaceUseCase.DELETE_INTERFACE_USE_CASE]({ id })
+        .then(() => {
           this.$message({
             showClose: true,
             message: '删除成功。',

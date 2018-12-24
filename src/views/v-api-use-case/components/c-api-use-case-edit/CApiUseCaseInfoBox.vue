@@ -5,46 +5,55 @@
   -- @author hanli <lihan_li@test.com>
   -- @date 2018-12-19 14:17:35
   -- @last_modified_by hanli <lihan_li@test.com>
-  -- @last_modified_date 2018-12-21 18:04:19
+  -- @last_modified_date 2018-12-24 17:41:06
   -- @copyright (c) 2018 @itest/itest-front
   -- --------------------------------------------------------
  -->
 <template>
   <div class="url-box">
     <el-row>
-      <el-col :span="20">
+      <el-col :span="18">
         <el-form label-width="80px">
           <el-form-item label="用例名称" class="required">
             <el-input
               v-model="name"/>
           </el-form-item>
-          <el-form-item label="测试接口" prop="interfaceIds">
-            <el-cascader
-              :options="options"
-              :props="interfaceProps"
-              :show-all-levels="false"
-              v-model="interfaceIds"
-              placeholder="可搜索接口"
-              filterable/>
-            <el-input
-              :disabled="true"
-              v-model="path"
-              placeholder="\path"
-              class="input-with-select">
-              <el-select
-                slot="prepend"
-                v-model="method"
-                placeholder="请选择">
-                <el-option label="GET" value="get"/>
-                <el-option label="POST" value="post"/>
-                <el-option label="PUT" value="put"/>
-                <el-option label="PATCH" value="patch"/>
-                <el-option label="DELETE" value="delete"/>
-              </el-select>
-            </el-input>
-          </el-form-item>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="10">
+              <el-form-item label="测试接口" prop="interfaceIds">
+                <el-cascader
+                  :options="options"
+                  :props="interfaceProps"
+                  :show-all-levels="false"
+                  v-model="interfaceIds"
+                  placeholder="可搜索接口"
+                  filterable
+                  @change="changeInterface"/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="14">
+              <el-form-item label="接口路径">
+                <el-input
+                  :disabled="true"
+                  v-model="path"
+                  placeholder="\path"
+                  class="input-with-select">
+                  <el-select
+                    slot="prepend"
+                    v-model="method"
+                    placeholder="请选择">
+                    <el-option label="GET" value="get"/>
+                    <el-option label="POST" value="post"/>
+                    <el-option label="PUT" value="put"/>
+                    <el-option label="PATCH" value="patch"/>
+                    <el-option label="DELETE" value="delete"/>
+                  </el-select>
+                </el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="10">
               <el-form-item label="用例分组" prop="groupId">
                 <el-select
                   v-model="groupId"
@@ -58,7 +67,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="14">
               <el-form-item label="用例级别" prop="level">
                 <el-select
                   v-model="level"
@@ -74,15 +83,36 @@
           </el-row>
           <el-form-item label="用例详情" class="required">
             <el-input
-              v-model="detail"/>
+              v-model="detail"
+              type="textarea"/>
           </el-form-item>
         </el-form>
       </el-col>
-      <el-col :span="4">
-        <el-button
-          class="api-save"
-          type="primary"
-          @click="save()"/>
+      <el-col :span="6">
+        <el-row>
+          <el-col :span="24">
+            <el-button
+              class="api-save api-button"
+              type="primary"
+              @click="save()"/>
+          </el-col>
+          <el-col :span="24">
+            <label>环境</label>
+            <el-select
+              v-model="debugEnv"
+              placeholder="请选择">
+              <el-option
+                v-for="env in allEnv"
+                :key="env.id"
+                :label="env.name"
+                :value="env.id"/>
+            </el-select>
+            <el-button
+              class="api-button"
+              type="success"
+              @click="debug()">测试</el-button>
+          </el-col>
+        </el-row>
       </el-col>
     </el-row>
   </div>
@@ -90,14 +120,17 @@
 
 <script>
 import mInterfaceUseCase from 'mixins/m-interface-use-case';
+import mInterface from 'mixins/m-interface';
 import * as uBehavior from 'store/constants/interface-use-case';
+import * as iBehavior from 'store/constants/interface';
 
 export default {
   name: 'CApiUseCaseInfoBox',
-  mixins: [mInterfaceUseCase],
+  mixins: [mInterfaceUseCase, mInterface],
   data() {
     return {
       saveToken: false,
+      debugToken: false,
       isShowDialog: false,
       formRules: {
         name: [
@@ -127,9 +160,6 @@ export default {
     };
   },
   computed: {
-    api() {
-      return this.$store.getters.api;
-    },
     groupId: {
       get() {
         return this.$store.getters.apiUseCase.groupId;
@@ -194,11 +224,30 @@ export default {
           ['level', value]);
       }
     },
+    debugEnv: {
+      get() {
+        let defaultId = '';
+        if (this.allEnv.length > 0) {
+          defaultId = this.allEnv[0].id;
+          this.allEnv.forEach(env => {
+            if (env.isDefault) {
+              defaultId = env.id;
+            }
+          });
+        }
+        return defaultId;
+      }
+    },
     useCaseGroups() {
       return this.$store.getters.apiUseCaseGroup;
     },
+    // 用例分组信息
     options() {
       return this.$store.getters.apiGroup;
+    },
+    // 环境信息
+    allEnv() {
+      return this.$store.getters.allEnv;
     },
     // 接口list对象 方便选择接口
     apiGroupObj() {
@@ -232,11 +281,32 @@ export default {
         this.$message.error(`保存失败:${err.msg}`);
       });
     },
+    debug() {
+      if (this.debugToken) {
+        return;
+      }
+      this.debugToken = true;
+      this[uBehavior.EXECUTE_INTERFACE_USE_CASE]().then(() => {
+        this.debugToken = false;
+        this.$message.success('保存成功');
+      }).catch(err => {
+        this.debugToken = false;
+        this.$message.error(`保存失败:${err.msg}`);
+      });
+    },
     onKeydown(e) {
       if (e.keyCode === 83 && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         this.save();
       }
+    },
+    changeInterface(val) {
+      this[iBehavior.GET_INTERFACE_INFO]({ interfaceId: val[1] }).then(res => {
+        this.path = res.data.path;
+        this.method = res.data.method;
+      }).catch(err => {
+        this.$message.error(`获取接口信息失败:${err.msg}`);
+      });
     }
   }
 };
@@ -260,9 +330,9 @@ export default {
     }
   }
 
-  .api-save {
+  .api-button {
     float: right;
-    margin-right: 20px;
+    margin: 0 20px 20px 0;
     width: 91px;
   }
 

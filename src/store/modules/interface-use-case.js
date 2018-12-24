@@ -5,7 +5,7 @@
  ** @author  hanli
  ** @date 2018-11-26 16:32:26
  ** @last_modified_by hanli <lihan_li@test.com>
- ** @last_modified_date 2018-12-21 11:09:45
+ ** @last_modified_date 2018-12-24 17:19:13
  ** @copyright (c) 2018 @itest/itest-front
  ** ********************************************************
  */
@@ -93,8 +93,9 @@ const actions = {
   [behavior.CREATE_INTERFACE_USE_CASE](context, params) {
     return createInterfaceUseCase(params);
   },
-  [behavior.UPDATE_INTERFACE_USE_CASE](context, params) {
-    return updateInterfaceUseCase(params);
+  /* eslint no-shadow: ["error", { "allow": ["state"] }] */
+  [behavior.UPDATE_INTERFACE_USE_CASE]({ state }) {
+    return updateInterfaceUseCase(state.apiUseCase);
   },
   [behavior.DELETE_INTERFACE_USE_CASE](context, params) {
     return deleteInterfaceUseCase(params).then(() => {
